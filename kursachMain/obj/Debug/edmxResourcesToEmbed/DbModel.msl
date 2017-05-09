@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище kursachModelContainer" CdmEntityContainer="kursachDb">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="kursachModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PractTupe">
+      <EntityTypeMapping TypeName="kursachModel.Виды_практики">
+        <MappingFragment StoreEntitySet="Виды практики">
+          <ScalarProperty Name="IDпрактики" ColumnName="IDпрактики" />
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+          <ScalarProperty Name="IDПроведения" ColumnName="IDПроведения" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grups">
+      <EntityTypeMapping TypeName="kursachModel.Группы">
+        <MappingFragment StoreEntitySet="Группы">
+          <ScalarProperty Name="IDГруппы" ColumnName="IDГруппы" />
+          <ScalarProperty Name="НомерГруппы" ColumnName="НомерГруппы" />
+          <ScalarProperty Name="ФИОКуратора" ColumnName="ФИОКуратора" />
+          <ScalarProperty Name="ФИОСтаросты" ColumnName="ФИОСтаросты" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pacts">
+      <EntityTypeMapping TypeName="kursachModel.Договоры">
+        <MappingFragment StoreEntitySet="Договоры">
+          <ScalarProperty Name="IDДоговора" ColumnName="IDДоговора" />
+          <ScalarProperty Name="НомерДоговора" ColumnName="НомерДоговора" />
+          <ScalarProperty Name="ДатаЗаключения" ColumnName="ДатаЗаключения" />
+          <ScalarProperty Name="ФИОИсполнителя" ColumnName="ФИОИсполнителя" />
+          <ScalarProperty Name="ДолжностьИсполнителя" ColumnName="ДолжностьИсполнителя" />
+          <ScalarProperty Name="НазваниеПредприятия" ColumnName="НазваниеПредприятия" />
+          <ScalarProperty Name="УченаяСтепень" ColumnName="УченаяСтепень" />
+          <ScalarProperty Name="Звание" ColumnName="Звание" />
+          <ScalarProperty Name="СерияПаспорта" ColumnName="СерияПаспорта" />
+          <ScalarProperty Name="НомерПаспорта" ColumnName="НомерПаспорта" />
+          <ScalarProperty Name="ДатаВыдачи" ColumnName="ДатаВыдачи" />
+          <ScalarProperty Name="ОрганВыдачи" ColumnName="ОрганВыдачи" />
+          <ScalarProperty Name="ИдентификационныйНомер" ColumnName="ИдентификационныйНомер" />
+          <ScalarProperty Name="НомерСтраховогоСвидетельства" ColumnName="НомерСтраховогоСвидетельства" />
+          <ScalarProperty Name="ДомашнийАдрес" ColumnName="ДомашнийАдрес" />
+          <ScalarProperty Name="ТелРабочий" ColumnName="ТелРабочий" />
+          <ScalarProperty Name="ТелДомашний" ColumnName="ТелДомашний" />
+          <ScalarProperty Name="МестоОсновнойРаботы" ColumnName="МестоОсновнойРаботы" />
+          <ScalarProperty Name="IDСтудента" ColumnName="IDСтудента" />
+          <ScalarProperty Name="ДатаПроведения" ColumnName="ДатаПроведения" />
+          <ScalarProperty Name="КоличествоЧасов" ColumnName="КоличествоЧасов" />
+          <ScalarProperty Name="СтоимостьОдногоЧаса" ColumnName="СтоимостьОдногоЧаса" />
+          <ScalarProperty Name="ОбщаяСумма" ColumnName="ОбщаяСумма" />
+          <ScalarProperty Name="НомерПриказа" ColumnName="НомерПриказа" />
+          <ScalarProperty Name="ДатаПриказа" ColumnName="ДатаПриказа" />
+          <ScalarProperty Name="ФИООтделаКадров" ColumnName="ФИООтделаКадров" />
+          <ScalarProperty Name="ФИОЗавКафедрой" ColumnName="ФИОЗавКафедрой" />
+          <ScalarProperty Name="НазваниеКафедры" ColumnName="НазваниеКафедры" />
+          <ScalarProperty Name="РуководительПрактики" ColumnName="РуководительПрактики" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecrutmentPlan">
+      <EntityTypeMapping TypeName="kursachModel.ПланНабора">
+        <MappingFragment StoreEntitySet="ПланНабора">
+          <ScalarProperty Name="IDНабораНаГод" ColumnName="IDНабораНаГод" />
+          <ScalarProperty Name="Год" ColumnName="Год" />
+          <ScalarProperty Name="МаксКолвоСтудентов" ColumnName="МаксКолвоСтудентов" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Enterprices">
+      <EntityTypeMapping TypeName="kursachModel.Предприятия">
+        <MappingFragment StoreEntitySet="Предприятия">
+          <ScalarProperty Name="ID_предприятия" ColumnName="ID предприятия" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="УНП" ColumnName="УНП" />
+          <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+          <ScalarProperty Name="Эл__почта" ColumnName="Эл. почта" />
+          <ScalarProperty Name="Контактное_лицо" ColumnName="Контактное лицо" />
+          <ScalarProperty Name="IDЗаключенныхДоговоров" ColumnName="IDЗаключенныхДоговоров" />
+          <ScalarProperty Name="IDНабораНаГод" ColumnName="IDНабораНаГод" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Techer">
+      <EntityTypeMapping TypeName="kursachModel.Преподаватели">
+        <MappingFragment StoreEntitySet="Преподаватели">
+          <ScalarProperty Name="IDПреподавателя" ColumnName="IDПреподавателя" />
+          <ScalarProperty Name="ФИОПреподавателя" ColumnName="ФИОПреподавателя" />
+          <ScalarProperty Name="Должность" ColumnName="Должность" />
+          <ScalarProperty Name="Кафедра" ColumnName="Кафедра" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConductingPractice">
+      <EntityTypeMapping TypeName="kursachModel.ПроведениеПрактики">
+        <MappingFragment StoreEntitySet="ПроведениеПрактики">
+          <ScalarProperty Name="IDПроведения" ColumnName="IDПроведения" />
+          <ScalarProperty Name="Год" ColumnName="Год" />
+          <ScalarProperty Name="Производственная" ColumnName="Производственная" />
+          <ScalarProperty Name="Преддипломная" ColumnName="Преддипломная" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Spceialtes">
+      <EntityTypeMapping TypeName="kursachModel.Специальности">
+        <MappingFragment StoreEntitySet="Специальности">
+          <ScalarProperty Name="IDСпециальности" ColumnName="IDСпециальности" />
+          <ScalarProperty Name="НомерСпециальности" ColumnName="НомерСпециальности" />
+          <ScalarProperty Name="НазваниеСпециальности" ColumnName="НазваниеСпециальности" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="kursachModel.Студенты">
+        <MappingFragment StoreEntitySet="Студенты">
+          <ScalarProperty Name="IDСтудента" ColumnName="IDСтудента" />
+          <ScalarProperty Name="ФИОСтудента" ColumnName="ФИОСтудента" />
+          <ScalarProperty Name="IDГруппы" ColumnName="IDГруппы" />
+          <ScalarProperty Name="IDСпециальности" ColumnName="IDСпециальности" />
+          <ScalarProperty Name="НомерТелефона" ColumnName="НомерТелефона" />
+          <ScalarProperty Name="НомерЗачетки" ColumnName="НомерЗачетки" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Current">
+      <EntityTypeMapping TypeName="kursachModel.Текущая_практика">
+        <MappingFragment StoreEntitySet="Текущая практика">
+          <ScalarProperty Name="IDТекущейПрактики" ColumnName="IDТекущейПрактики" />
+          <ScalarProperty Name="IDДоговора" ColumnName="IDДоговора" />
+          <ScalarProperty Name="IDВидаПрактики" ColumnName="IDВидаПрактики" />
+          <ScalarProperty Name="IDПреподавателя" ColumnName="IDПреподавателя" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище kursachModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Виды практики">
+    <Key>
+      <PropertyRef Name="IDпрактики" />
+    </Key>
+    <Property Name="IDпрактики" Type="int" Nullable="false" />
+    <Property Name="Наименование" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IDПроведения" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Группы">
+    <Key>
+      <PropertyRef Name="IDГруппы" />
+    </Key>
+    <Property Name="IDГруппы" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="НомерГруппы" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ФИОКуратора" Type="varchar" MaxLength="50" />
+    <Property Name="ФИОСтаросты" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Договоры">
+    <Key>
+      <PropertyRef Name="IDДоговора" />
+    </Key>
+    <Property Name="IDДоговора" Type="int" Nullable="false" />
+    <Property Name="НомерДоговора" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ДатаЗаключения" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ФИОИсполнителя" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ДолжностьИсполнителя" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="НазваниеПредприятия" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="УченаяСтепень" Type="varchar" MaxLength="50" />
+    <Property Name="Звание" Type="varchar" MaxLength="50" />
+    <Property Name="СерияПаспорта" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="НомерПаспорта" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ДатаВыдачи" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ОрганВыдачи" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ИдентификационныйНомер" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="НомерСтраховогоСвидетельства" Type="varchar" MaxLength="50" />
+    <Property Name="ДомашнийАдрес" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ТелРабочий" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ТелДомашний" Type="varchar" MaxLength="50" />
+    <Property Name="МестоОсновнойРаботы" Type="varchar" MaxLength="50" />
+    <Property Name="IDСтудента" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ДатаПроведения" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="КоличествоЧасов" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="СтоимостьОдногоЧаса" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ОбщаяСумма" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="НомерПриказа" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ДатаПриказа" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ФИООтделаКадров" Type="varchar" MaxLength="50" />
+    <Property Name="ФИОЗавКафедрой" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="НазваниеКафедры" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="РуководительПрактики" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ПланНабора">
+    <Key>
+      <PropertyRef Name="IDНабораНаГод" />
+    </Key>
+    <Property Name="IDНабораНаГод" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Год" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="МаксКолвоСтудентов" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Предприятия">
+    <Key>
+      <PropertyRef Name="ID предприятия" />
+    </Key>
+    <Property Name="ID предприятия" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Название" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="УНП" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Адрес" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Телефон" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Эл. почта" Type="varchar" MaxLength="50" />
+    <Property Name="Контактное лицо" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IDЗаключенныхДоговоров" Type="int" Nullable="false" />
+    <Property Name="IDНабораНаГод" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Преподаватели">
+    <Key>
+      <PropertyRef Name="IDПреподавателя" />
+    </Key>
+    <Property Name="IDПреподавателя" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ФИОПреподавателя" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Должность" Type="varchar" MaxLength="50" />
+    <Property Name="Кафедра" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ПроведениеПрактики">
+    <Key>
+      <PropertyRef Name="IDПроведения" />
+    </Key>
+    <Property Name="IDПроведения" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Год" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Производственная" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Преддипломная" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Специальности">
+    <Key>
+      <PropertyRef Name="IDСпециальности" />
+    </Key>
+    <Property Name="IDСпециальности" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="НомерСпециальности" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="НазваниеСпециальности" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Студенты">
+    <Key>
+      <PropertyRef Name="IDСтудента" />
+    </Key>
+    <Property Name="IDСтудента" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ФИОСтудента" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IDГруппы" Type="int" Nullable="false" />
+    <Property Name="IDСпециальности" Type="int" Nullable="false" />
+    <Property Name="НомерТелефона" Type="varchar" MaxLength="50" />
+    <Property Name="НомерЗачетки" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Текущая практика">
+    <Key>
+      <PropertyRef Name="IDТекущейПрактики" />
+    </Key>
+    <Property Name="IDТекущейПрактики" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDДоговора" Type="int" Nullable="false" />
+    <Property Name="IDВидаПрактики" Type="int" Nullable="false" />
+    <Property Name="IDПреподавателя" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Виды практики_ПроведениеПрактики">
+    <End Role="ПроведениеПрактики" Type="Self.ПроведениеПрактики" Multiplicity="1" />
+    <End Role="Виды практики" Type="Self.Виды практики" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ПроведениеПрактики">
+        <PropertyRef Name="IDПроведения" />
+      </Principal>
+      <Dependent Role="Виды практики">
+        <PropertyRef Name="IDПроведения" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Договоры_Студенты">
+    <End Role="Студенты" Type="Self.Студенты" Multiplicity="1" />
+    <End Role="Договоры" Type="Self.Договоры" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Студенты">
+        <PropertyRef Name="IDСтудента" />
+      </Principal>
+      <Dependent Role="Договоры">
+        <PropertyRef Name="IDСтудента" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Предприятия_Договоры">
+    <End Role="Договоры" Type="Self.Договоры" Multiplicity="1" />
+    <End Role="Предприятия" Type="Self.Предприятия" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Договоры">
+        <PropertyRef Name="IDДоговора" />
+      </Principal>
+      <Dependent Role="Предприятия">
+        <PropertyRef Name="IDЗаключенныхДоговоров" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Предприятия_ПланНабора">
+    <End Role="ПланНабора" Type="Self.ПланНабора" Multiplicity="1" />
+    <End Role="Предприятия" Type="Self.Предприятия" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ПланНабора">
+        <PropertyRef Name="IDНабораНаГод" />
+      </Principal>
+      <Dependent Role="Предприятия">
+        <PropertyRef Name="IDНабораНаГод" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Студенты_Группы">
+    <End Role="Группы" Type="Self.Группы" Multiplicity="1" />
+    <End Role="Студенты" Type="Self.Студенты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Группы">
+        <PropertyRef Name="IDГруппы" />
+      </Principal>
+      <Dependent Role="Студенты">
+        <PropertyRef Name="IDГруппы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Студенты_Специальности">
+    <End Role="Специальности" Type="Self.Специальности" Multiplicity="1" />
+    <End Role="Студенты" Type="Self.Студенты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Специальности">
+        <PropertyRef Name="IDСпециальности" />
+      </Principal>
+      <Dependent Role="Студенты">
+        <PropertyRef Name="IDСпециальности" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Текущая практика_Виды практики">
+    <End Role="Виды практики" Type="Self.Виды практики" Multiplicity="1" />
+    <End Role="Текущая практика" Type="Self.Текущая практика" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Виды практики">
+        <PropertyRef Name="IDпрактики" />
+      </Principal>
+      <Dependent Role="Текущая практика">
+        <PropertyRef Name="IDВидаПрактики" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Текущая практика_Договоры">
+    <End Role="Договоры" Type="Self.Договоры" Multiplicity="1" />
+    <End Role="Текущая практика" Type="Self.Текущая практика" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Договоры">
+        <PropertyRef Name="IDДоговора" />
+      </Principal>
+      <Dependent Role="Текущая практика">
+        <PropertyRef Name="IDДоговора" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Текущая практика_Преподаватели">
+    <End Role="Преподаватели" Type="Self.Преподаватели" Multiplicity="1" />
+    <End Role="Текущая практика" Type="Self.Текущая практика" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Преподаватели">
+        <PropertyRef Name="IDПреподавателя" />
+      </Principal>
+      <Dependent Role="Текущая практика">
+        <PropertyRef Name="IDПреподавателя" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище kursachModelContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Виды практики" EntityType="Self.Виды практики" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Группы" EntityType="Self.Группы" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Договоры" EntityType="Self.Договоры" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ПланНабора" EntityType="Self.ПланНабора" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Предприятия" EntityType="Self.Предприятия" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Преподаватели" EntityType="Self.Преподаватели" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ПроведениеПрактики" EntityType="Self.ПроведениеПрактики" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Специальности" EntityType="Self.Специальности" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Студенты" EntityType="Self.Студенты" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Текущая практика" EntityType="Self.Текущая практика" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Виды практики_ПроведениеПрактики" Association="Self.FK_Виды практики_ПроведениеПрактики">
+      <End Role="ПроведениеПрактики" EntitySet="ПроведениеПрактики" />
+      <End Role="Виды практики" EntitySet="Виды практики" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Договоры_Студенты" Association="Self.FK_Договоры_Студенты">
+      <End Role="Студенты" EntitySet="Студенты" />
+      <End Role="Договоры" EntitySet="Договоры" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Предприятия_Договоры" Association="Self.FK_Предприятия_Договоры">
+      <End Role="Договоры" EntitySet="Договоры" />
+      <End Role="Предприятия" EntitySet="Предприятия" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Предприятия_ПланНабора" Association="Self.FK_Предприятия_ПланНабора">
+      <End Role="ПланНабора" EntitySet="ПланНабора" />
+      <End Role="Предприятия" EntitySet="Предприятия" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Студенты_Группы" Association="Self.FK_Студенты_Группы">
+      <End Role="Группы" EntitySet="Группы" />
+      <End Role="Студенты" EntitySet="Студенты" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Студенты_Специальности" Association="Self.FK_Студенты_Специальности">
+      <End Role="Специальности" EntitySet="Специальности" />
+      <End Role="Студенты" EntitySet="Студенты" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Текущая практика_Виды практики" Association="Self.FK_Текущая практика_Виды практики">
+      <End Role="Виды практики" EntitySet="Виды практики" />
+      <End Role="Текущая практика" EntitySet="Текущая практика" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Текущая практика_Договоры" Association="Self.FK_Текущая практика_Договоры">
+      <End Role="Договоры" EntitySet="Договоры" />
+      <End Role="Текущая практика" EntitySet="Текущая практика" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Текущая практика_Преподаватели" Association="Self.FK_Текущая практика_Преподаватели">
+      <End Role="Преподаватели" EntitySet="Преподаватели" />
+      <End Role="Текущая практика" EntitySet="Текущая практика" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

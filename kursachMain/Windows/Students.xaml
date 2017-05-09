@@ -1,0 +1,177 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kursachMain.Windows"
+        xmlns:kursachMain="clr-namespace:kursachMain" x:Class="kursachMain.Windows.Students"
+        mc:Ignorable="d"
+        Title="Students" Height="600" Width="1100" Loaded="Window_Loaded">
+    <Grid>
+        <TabControl Margin="0,5,20,15" BorderThickness="0" Background="LightGray" SelectionChanged="TabControl_SelectionChanged">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Grid Name="Panel">
+                                    <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Panel" Property="Background" Value="LightSkyBlue" />
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Panel" Property="Background" Value="White" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="Группы">
+                <Grid Height="600">
+
+                    <GroupBox Header="Добавить группу" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="736" Height="200">
+                        <Grid>
+                            <Label Content="Номер"  HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="nomberGr"  HorizontalAlignment="Right" Height="20" Margin="0,16,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Addres_TextChanged"/>
+                            <Label Content="Ф.И.О Куратора"  HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="Kurator"  HorizontalAlignment="Right" Height="20" Margin="0,41,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Addres_TextChanged"/>
+                            <Label Content="Ф.И.О Старосты"  HorizontalAlignment="Left" Margin="0,60,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="Starosta"  HorizontalAlignment="Right" Height="20" Margin="0,66,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Addres_TextChanged"/>
+
+
+
+                            <Label  HorizontalAlignment="Left" Margin="327,60,0,0" VerticalAlignment="Top">
+
+                            </Label>
+
+                        </Grid>
+
+                    </GroupBox>
+
+                    <DataGrid x:Name="StudentsDataGrid" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="259" Width="1050" HeadersVisibility="Column" MinColumnWidth="110.0" MaxColumnWidth="141.0" Margin="0,0,0,86" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
+                    <Button x:Name="SaveStud" Content="Сохранить" HorizontalAlignment="Left" Margin="8,222,0,0" VerticalAlignment="Top" Width="93" Click="Button_Click" AutomationProperties.Name="Save" Grid.ColumnSpan="2"/>
+                    <Button x:Name="Update" Content="Обновить" HorizontalAlignment="Left" Margin="106,222,0,0" VerticalAlignment="Top" Width="93" Click="Button_Click_1" AutomationProperties.Name="Update"/>
+                    <Button x:Name="Delete" Content="Del" Width="75" Margin="216,223,773,356" RenderTransformOrigin="0.693,0.476" Click="Delete_Click"/>
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Специальность">
+                <Grid Height="600">
+
+                    <GroupBox Header="Добавить Специальность" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="736" Height="200">
+                        <Grid>
+                            <Label Content="Номер Специальности"  HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="NomerSpec"  HorizontalAlignment="Right" Height="20" Margin="0,16,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Addres_TextChanged"/>
+                            <Label Content="Название Специальности"  HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="NameSpec"  HorizontalAlignment="Right" Height="20" Margin="0,41,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Addres_TextChanged"/>
+
+                            <Label  HorizontalAlignment="Left" Margin="327,60,0,0" VerticalAlignment="Top">
+
+                            </Label>
+                        </Grid>
+
+
+
+                    </GroupBox>
+
+                    <DataGrid x:Name="SpecDataGrid" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="259" Width="1050" HeadersVisibility="Column" MinColumnWidth="110.0" MaxColumnWidth="141.0" Margin="0,0,0,86" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
+                    <Button x:Name="SaveSpec" Content="Сохранить" HorizontalAlignment="Left" Margin="8,222,0,0" VerticalAlignment="Top" Width="93" Click="SaveSpecButton_Click" AutomationProperties.Name="Save" Grid.ColumnSpan="2"/>
+                    <Button x:Name="UpdateSpec" Content="Обновить" HorizontalAlignment="Left" Margin="106,222,0,0" VerticalAlignment="Top" Width="93" Click="OpdateSpecButton_Click_1" AutomationProperties.Name="Update"/>
+
+                </Grid>
+
+            </TabItem>
+
+
+            <TabItem Header="Студенты" >
+                <Grid Height="600">
+
+                    <GroupBox Header="Добавить Студента" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="736" Height="200">
+                        <Grid>
+                            <Label Content="Ф.И.О"  HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="StudName"  HorizontalAlignment="Right" Height="20" Margin="0,16,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Addres_TextChanged"/>
+                            <Label Content="ID Группы"  HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="IDGrup"  HorizontalAlignment="Right" Height="20" Margin="0,41,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Addres_TextChanged"/>
+                            <Label Content="ID Специальности"  HorizontalAlignment="Left" Margin="0,60,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="IDSpec"  HorizontalAlignment="Right" Height="20" Margin="0,66,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Addres_TextChanged"/>
+                            <Label Content="Номер Телефона"  HorizontalAlignment="Left" Margin="0,87,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="PhoneStud"  HorizontalAlignment="Right" Height="20" Margin="0,91,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Addres_TextChanged"/>
+                            <Label Content="Номер Зачетки"  HorizontalAlignment="Left" Margin="0,113,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="NomberOfRecordBookStud"  HorizontalAlignment="Right" Height="20" Margin="0,116,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Addres_TextChanged"/>
+
+                        </Grid>
+                    </GroupBox>
+
+                    <DataGrid x:Name="StudentDataGrid" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="259" Width="1050" HeadersVisibility="Column" MinColumnWidth="110.0" MaxColumnWidth="141.0" Margin="0,0,0,86" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
+                    <Button x:Name="addStud" Content="Сохранить" HorizontalAlignment="Left" Margin="8,222,0,0" VerticalAlignment="Top" Width="93" Click="SaveStudButton_Click" AutomationProperties.Name="SaveStud" Grid.ColumnSpan="2"/>
+                    <Button x:Name="UpdateStudent" Content="Обновить" HorizontalAlignment="Left" Margin="106,222,0,0" VerticalAlignment="Top" Width="93" Click="UpdateStudButton_Click_1" AutomationProperties.Name="Update"/>
+                    <Button x:Name="DeleteStudent" Content="Del" Width="75" Margin="216,223,773,356" RenderTransformOrigin="0.693,0.476" Click="Delete_Click"/>
+                </Grid>
+
+
+            </TabItem>
+
+            <TabItem Header="Договоры" >
+                <Grid Height="700">
+                    <GroupBox Header="Добавить договор" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="900" Height="400">
+                        <Grid>
+                            <TextBox x:Name="PactNomber" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Номер заключения договора" VerticalAlignment="Top" Width="220" TextChanged="TextBox_TextChanged"/>
+                            <TextBox x:Name="DateOfContract" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" Text="Дата заключения договора" VerticalAlignment="Top" Width="220"/>
+                            <TextBox x:Name="ImplementerName" HorizontalAlignment="Left" Height="23" Margin="10,66,0,0" TextWrapping="Wrap" Text="Ф.И.О исполнителя" VerticalAlignment="Top" Width="220"/>
+                            <TextBox x:Name="ImplementPosition" HorizontalAlignment="Left" Height="23" Margin="10,94,0,0" TextWrapping="Wrap" Text="Должность исполнителя" VerticalAlignment="Top" Width="220"/>
+                            <TextBox x:Name="EnterpriceName" HorizontalAlignment="Left" Height="23" Margin="10,122,0,0" TextWrapping="Wrap" Text="Название предприятия" VerticalAlignment="Top" Width="220"/>
+                            <Label Content="Ученая степень" HorizontalAlignment="Left" Margin="50,145,0,0" VerticalAlignment="Top" Width="125" Height="23"/>
+                            <RadioButton x:Name="radio_btn_no" Content="нет" HorizontalAlignment="Left" Margin="105,168,0,0" VerticalAlignment="Top"/>
+                            <RadioButton x:Name="radio_btn_yes" Content="есть" HorizontalAlignment="Left" Margin="50,168,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="Rank" HorizontalAlignment="Left" Height="23" Margin="10,189,0,0" TextWrapping="Wrap" Text="Звание" VerticalAlignment="Top" Width="210"/>
+                            <TextBox x:Name="PasportRange" HorizontalAlignment="Left" Height="23" Margin="10,189,0,0" TextWrapping="Wrap" Text="Серия паспорта" VerticalAlignment="Top" Width="220"/>
+                            <TextBox x:Name="PasportNomber" HorizontalAlignment="Left" Height="23" Margin="10,217,0,0" TextWrapping="Wrap" Text="Номер паспорта" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                            <Label Content="Дата выдачи" HorizontalAlignment="Left" Margin="50,240,0,0" VerticalAlignment="Top" Width="125" Height="23"/>
+                            <DatePicker x:Name="DateOfIssue"  HorizontalAlignment="Left" Margin="10,263,0,0" VerticalAlignment="Top" Width="220"/>
+                            <TextBox x:Name="AgencyOfGive" HorizontalAlignment="Left" Height="23" Margin="10,292,0,0" TextWrapping="Wrap" Text="Орган выдачи" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                            <TextBox x:Name="ID_Nomber" HorizontalAlignment="Left" Height="23" Margin="10,320,0,0" TextWrapping="Wrap" Text="Идентификационный номер" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                            <TextBox x:Name="BelayNomber" HorizontalAlignment="Left" Height="23" Margin="300,10,0,0" TextWrapping="Wrap" Text="Номер страховки" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                            <TextBox x:Name="HomeAdress" HorizontalAlignment="Left" Height="23" Margin="300,38,0,0" TextWrapping="Wrap" Text="Домашний адрес" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                            <TextBox x:Name="WorkPhoneNumber" HorizontalAlignment="Left" Height="23" Margin="300,66,0,0" TextWrapping="Wrap" Text="Рабочий телефон" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                            <TextBox x:Name="HomePhoneNumber" HorizontalAlignment="Left" Height="23" Margin="300,94,0,0" TextWrapping="Wrap" Text="Домашний телефон" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                            <TextBox x:Name="MainWorkPlace" HorizontalAlignment="Left" Height="23" Margin="300,122,0,0" TextWrapping="Wrap" Text="Основное место работы " VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                            <TextBox x:Name="StudID" HorizontalAlignment="Left" Height="23" Margin="300,150,0,0" TextWrapping="Wrap" Text="идентификационный номер студента " VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                            <TextBox x:Name="DateStartPractice" HorizontalAlignment="Left" Height="23" Margin="300,178,0,0" TextWrapping="Wrap" Text="Дата проведения практики" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                            <TextBox x:Name="OursCount" HorizontalAlignment="Left" Height="23" Margin="300,206,0,0" TextWrapping="Wrap" Text="Количество часов" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                            <TextBox x:Name="CostOfOneOur" HorizontalAlignment="Left" Height="23" Margin="300,234,0,0" TextWrapping="Wrap" Text="цена одного часа" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                            <TextBox x:Name="TotalCost" HorizontalAlignment="Left" Height="23" Margin="300,234,0,0" TextWrapping="Wrap" Text="Общая цена" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                            <TextBox x:Name="OrderNumber" HorizontalAlignment="Left" Height="23" Margin="300,234,0,0" TextWrapping="Wrap" Text="Номер приказа" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                            <Label Content="Дата приказа" HorizontalAlignment="Left" Margin="345,262,0,0" VerticalAlignment="Top" Width="125" Height="30"/>
+                            <DatePicker x:Name="OrderDate"  HorizontalAlignment="Left" Margin="300,292,0,0" VerticalAlignment="Top" Width="220"/>
+                            <TextBox x:Name="FIOHumanResourcesDepartment" HorizontalAlignment="Left" Height="23" Margin="300,321,0,0" TextWrapping="Wrap" Text="Ф.И.О отдела кадров" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                            <TextBox x:Name="FIOHeadOfPulpit" HorizontalAlignment="Left" Height="23" Margin="590,10,0,0" TextWrapping="Wrap" Text="Ф.И.О отдела кадров" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                            <TextBox x:Name="PulpitName" HorizontalAlignment="Left" Height="23" Margin="590,38,0,0" TextWrapping="Wrap" Text="Название кафедры" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                            <TextBox x:Name="AdministratorOfEnterprice" HorizontalAlignment="Left" Height="23" Margin="590,66,0,0" TextWrapping="Wrap" Text="Руководитель предприятия" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478"/>
+                      
+                        </Grid>
+                    </GroupBox>
+                    <Button x:Name="AddPact" Content="Добавить" HorizontalAlignment="Left" Margin="10,422,0,0" VerticalAlignment="Top" Width="91"/>
+                    <Button x:Name="UpdatePact" Content="Обновить" HorizontalAlignment="Left" Margin="115,422,0,0" VerticalAlignment="Top" Width="91"/>
+
+                </Grid>
+
+
+            </TabItem>
+           
+
+
+
+        </TabControl>
+        
+    </Grid>
+
+
+</Window>

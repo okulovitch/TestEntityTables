@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9c06bf5f88b6453c8f4ab8e942d10abc" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="kursachModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.Виды_практики" Width="1.5" PointX="8.375" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.Группы" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.Договоры" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.ПланНабора" Width="1.625" PointX="5.125" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.Предприятия" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.Преподаватели" Width="1.5" PointX="8.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.ПроведениеПрактики" Width="1.5" PointX="6" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.Специальности" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.Студенты" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.Текущая_практика" Width="1.5" PointX="10.25" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="kursachModel.FK_Виды_практики_ПроведениеПрактики" ManuallyRouted="false" />
+        <AssociationConnector Association="kursachModel.FK_Текущая_практика_Виды_практики" ManuallyRouted="false" />
+        <AssociationConnector Association="kursachModel.FK_Студенты_Группы" ManuallyRouted="false" />
+        <AssociationConnector Association="kursachModel.FK_Договоры_Студенты" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="true" Association="kursachModel.FK_Предприятия_Договоры">
+          <ConnectorPoint PointX="6.75" PointY="4.8170475260416659" />
+          <ConnectorPoint PointX="7.5" PointY="4.8170475260416659" />
+        </AssociationConnector>
+        <AssociationConnector Association="kursachModel.FK_Текущая_практика_Договоры" ManuallyRouted="false" />
+        <AssociationConnector Association="kursachModel.FK_Предприятия_ПланНабора" ManuallyRouted="false" />
+        <AssociationConnector Association="kursachModel.FK_Текущая_практика_Преподаватели" ManuallyRouted="false" />
+        <AssociationConnector Association="kursachModel.FK_Студенты_Специальности" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
