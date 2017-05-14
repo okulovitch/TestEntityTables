@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\Владимир\Documents\Visual Studio 2017\Projects\mfcEntityKursach-master\kursachMain\DbModel.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\Владимир\Documents\Visual Studio 2017\Projects\mfcEntityKursach-master\kursachMain\mainModel.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

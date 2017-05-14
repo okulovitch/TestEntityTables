@@ -64,26 +64,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DbModel.Context.cs">
+    <Compile Include="mainModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DbModel.Context.tt</DependentUpon>
+      <DependentUpon>mainModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DbModel.cs">
+    <Compile Include="mainModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>mainModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DbModel.Designer.cs">
+    <Compile Include="mainModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DbModel.edmx</DependentUpon>
+      <DependentUpon>mainModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Grups.cs" />
     <Compile Include="Models\GrupsContext.cs" />
     <Compile Include="sysdiagrams.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>mainModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Validations.cs" />
     <Compile Include="Windows\createContract.xaml.cs">
       <DependentUpon>createContract.xaml</DependentUpon>
     </Compile>
@@ -97,34 +98,34 @@
       <DependentUpon>Students.xaml</DependentUpon>
     </Compile>
     <Compile Include="Виды_практики.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>mainModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Группы.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>mainModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Договоры.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>mainModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ПланНабора.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>mainModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Предприятия.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>mainModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Преподаватели.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>mainModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ПроведениеПрактики.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>mainModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Специальности.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>mainModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Студенты.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>mainModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Текущая_практика.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>mainModel.tt</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -173,12 +174,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="DbModel.edmx">
+    <EntityDeploy Include="mainModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DbModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>mainModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DbModel.edmx.diagram">
-      <DependentUpon>DbModel.edmx</DependentUpon>
+    <None Include="mainModel.edmx.diagram">
+      <DependentUpon>mainModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -193,19 +194,19 @@
     <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DbModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DbModel.Context.cs</LastGenOutput>
-      <DependentUpon>DbModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="DbModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DbModel.edmx</DependentUpon>
-      <LastGenOutput>DbModel.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="mainModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>mainModel.edmx</DependentUpon>
+      <LastGenOutput>mainModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="mainModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>mainModel.edmx</DependentUpon>
+      <LastGenOutput>mainModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

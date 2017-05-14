@@ -1,4 +1,4 @@
-﻿<Window x:Class="kursachMain.MainWindow"
+﻿<Window x:Class="kursachMain.MainWindow" ResizeMode="NoResize"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,14 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" Background="#FF493F3F">
 
-    <Grid Margin="207,90,184,90">
+    <Grid Margin="207,90,184,90" >
 
-        <Border Background="#FFDADADA" BorderBrush="Gainsboro" BorderThickness="1" Margin="-69,0,-35,-59">
+        <Border Background="#FFDADADA" BorderBrush="Gainsboro" BorderThickness="1" Margin="-69,0,-35,10" MinHeight="300" >
             <StackPanel Margin="10" Cursor="ScrollW">
                 <Button x:Name="btn_PracticMain" Click="Button_Click">Просмотр практики</Button>
                 <Button x:Name="btn_StudentsMain" Margin="0,10" Click="btn_StudentsMain_Click">Студенты</Button>
-                <Button x:Name="btn_PrepodsMain" Click="Button_Click_1" >Преподаватели</Button>
-                <Button  Margin="0,10">Распределить на практику</Button>
                 <Button  Margin="0" Content="Предприятия" Click="Button_Click_2"/>
 
 

@@ -21,11 +21,12 @@ namespace kursachMain.Windows
     /// <summary>
     /// Логика взаимодействия для Enterprises.xaml
     /// </summary>
+   
     public partial class Enterprises : Window
     {
 
-
-
+        kursachEntities kurs = new kursachEntities();
+        
 
 
 
@@ -35,8 +36,8 @@ namespace kursachMain.Windows
         {
             InitializeComponent();
         }
-        kursachDb db = new kursachDb();
-        Предприятия enterpr = new Предприятия();
+        //kursachDb db = new kursachDb();
+        //Предприятия enterpr = new Предприятия();
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
@@ -54,35 +55,32 @@ namespace kursachMain.Windows
 
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
+      
 
+        //private void Button_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        string constr = "kursachMain.Properties.Settings.kursachConnectionString";
+        //        SqlConnection con = new SqlConnection();
+        //        con.ConnectionString = ConfigurationManager.ConnectionStrings[constr].ConnectionString;
+        //        con.Open();
+        //        SqlCommand cmd = new SqlCommand();
+        //        cmd.CommandText = "Select Название,УНП,Адрес,Телефон from Предприятия";
+        //        cmd.Connection = con;
+        //        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //        DataTable dt = new DataTable();
+        //        da.Fill(dt);
+        //        EnterprisesDataGrid.ItemsSource = dt.DefaultView;
 
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                SqlConnection con = new SqlConnection();
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["kursachMain.Properties.Settings.kursachConnectionString"].ConnectionString;
-                con.Open();
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "Select Название,УНП,Адрес,Телефон from Предприятия";
-                cmd.Connection = con;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                EnterprisesDataGrid.ItemsSource = dt.DefaultView;
-
-                if (con != null)
-                    con.Close();
-            }
-            catch (Exception ex)
-            {
-                ex.GetBaseException();
-            }
-        }
+        //        if (con != null)
+        //            con.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ex.GetBaseException();
+        //    }
+        //}
 
         private void Addres_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -153,33 +151,54 @@ namespace kursachMain.Windows
 
         private void Button_Click_savePlan(object sender, RoutedEventArgs e)
         {
-            using (var context = new kursachDb())
+            using (var context = new kursachEntities())
             {
-                try
-                {
-                    //Специальности spec = new Специальности();
-                    //spec.НазваниеСпециальности = NameSpec.Text;
-                    //spec.НомерСпециальности = NomerSpec.Text;
-                    //context.Spceialtes.Add(spec);
-                    //context.SaveChanges();
-                    ПланНабора plan = new ПланНабора();
-                    plan.Год = Year.Text;
-                    plan.МаксКолвоСтудентов = CountStuds.Text;
-                    context.RecrutmentPlan.Add(plan);
-                    context.SaveChanges();
-                    MessageBox.Show("saved");
-                }
-                catch (Exception ex)
-                {
-                    ex.GetBaseException();
-                }
-
+                ПланНабора plan = new ПланНабора();
+                plan.Год = Year.Text;
+                plan.МаксКолвоСтудентов = CountStuds.Text;
+                context.ПланНабора.Add(plan);
+                context.SaveChanges();
             }
+              
+            
         }
 
         private void Button_Click_LoadPlan(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void YearPlanTextBox(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void CountStudTextBox(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void IDEnterpricesPactsTextBox(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void IDOfTakingOnYearTextBox(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void SaveEnterpriceBtn(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UpdateEnterpriceBtn(object sender, RoutedEventArgs e)
+        {
+            //var data = from x in kurs.Студенты select new { x.IDСтудента, x.ФИОСтудента, x.IDГруппы, x.НомерТелефона, x.НомерЗачетки };
+            //StudentDataGrid.ItemsSource = data.ToList();
+            var data = from x in kurs.Предприятия select new { x.ID_предприятия, x.Название, x.Адрес, x.Контактное_лицо, x.УНП, x.IDЗаключенныхДоговоров, x.IDНабораНаГод };
+            EnterprisesDataGrid.ItemsSource = data.ToList();
         }
     }
 }

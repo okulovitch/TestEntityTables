@@ -100,3 +100,4 @@ C:\Users\Владимир\Documents\Visual Studio 2017\Projects\mfcEntityKursach
 C:\Users\Владимир\Documents\Visual Studio 2017\Projects\mfcEntityKursach-master\kursachMain\obj\Debug\kursachMain.csproj.GenerateResource.Cache
 C:\Users\Владимир\Documents\Visual Studio 2017\Projects\mfcEntityKursach-master\kursachMain\obj\Debug\kursachMain.exe
 C:\Users\Владимир\Documents\Visual Studio 2017\Projects\mfcEntityKursach-master\kursachMain\obj\Debug\kursachMain.pdb
+C:\Users\Владимир\Documents\Visual Studio 2017\Projects\mfcEntityKursach-master\kursachMain\obj\Debug\GeneratedInternalTypeHelper.g.cs
