@@ -165,7 +165,8 @@ namespace kursachMain.Windows
 
         private void Button_Click_LoadPlan(object sender, RoutedEventArgs e)
         {
-
+            var data = from x in kurs.ПланНабора select new {x.IDНабораНаГод,x.Год,x.МаксКолвоСтудентов };
+            PlanDataGrid.ItemsSource = data.ToList();
         }
 
         private void YearPlanTextBox(object sender, TextChangedEventArgs e)
@@ -190,15 +191,37 @@ namespace kursachMain.Windows
 
         private void SaveEnterpriceBtn(object sender, RoutedEventArgs e)
         {
-
+            using (var context = new kursachEntities())
+            {
+                Предприятия enterpr = new Предприятия();
+                if (NameBox.Text == string.Empty)
+                {
+               
+                }
+                enterpr.Название = NameBox.Text;
+                enterpr.УНП = YNPBox.Text;
+                enterpr.Адрес = Addres.Text;
+                enterpr.Телефон = Phone.Text;
+                enterpr.Эл__почта = Email.Text;
+                enterpr.Контактное_лицо = ContactFaceBox.Text;
+                enterpr.IDЗаключенныхДоговоров = int.Parse(IDEnterpricesPacts.Text);
+                enterpr.IDНабораНаГод =  int.Parse(IDOfTakingOnYear.Text);
+                context.Предприятия.Add(enterpr);
+                context.SaveChanges();
+            }
         }
 
         private void UpdateEnterpriceBtn(object sender, RoutedEventArgs e)
         {
             //var data = from x in kurs.Студенты select new { x.IDСтудента, x.ФИОСтудента, x.IDГруппы, x.НомерТелефона, x.НомерЗачетки };
             //StudentDataGrid.ItemsSource = data.ToList();
-            var data = from x in kurs.Предприятия select new { x.ID_предприятия, x.Название, x.Адрес, x.Контактное_лицо, x.УНП, x.IDЗаключенныхДоговоров, x.IDНабораНаГод };
+        
+            var data = from x in kurs.Предприятия select new { x.ID_предприятия, x.Название, x.Адрес,
+                x.Контактное_лицо, x.УНП, x.IDЗаключенныхДоговоров, x.IDНабораНаГод,x.Эл__почта};
             EnterprisesDataGrid.ItemsSource = data.ToList();
+           
+
+            
         }
     }
 }

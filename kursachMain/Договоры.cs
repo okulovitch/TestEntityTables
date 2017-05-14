@@ -43,7 +43,7 @@ namespace kursachMain
         public string ДатаПроведения { get; set; }
         public string КоличествоЧасов { get; set; }
         public string СтоимостьОдногоЧаса { get; set; }
-        public string ОбщаяСумма { get; set; }
+        public string ОбщаяСумма { get; set; }//-
         public string НомерПриказа { get; set; }
         public string ДатаПриказа { get; set; }
         public string ФИООтделаКадров { get; set; }

@@ -7,6 +7,7 @@
         xmlns:kursachMain="clr-namespace:kursachMain" x:Class="kursachMain.Windows.Enterprises"
         mc:Ignorable="d"
         Title="Enterprises" Height="600" Width="1100" Loaded="Window_Loaded_1">
+    
     <Grid>
         <TabControl Margin="0,5,20,15" BorderThickness="0" Background="LightGray" SelectionChanged="TabControl_SelectionChanged">
             <TabControl.Resources>
@@ -81,11 +82,11 @@
 
                     <GroupBox Header="add plan" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Width="451" Height="200" Grid.ColumnSpan="2">
                         <Grid>
-                            <Label Content="Год"  HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="Year"  HorizontalAlignment="Right" Height="20" Margin="0,16,109,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="YearPlanTextBox"/>
-                            <Label Content="Количество Студентов"  HorizontalAlignment="Left" Margin="0,36,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="CountStuds"  HorizontalAlignment="Right" Height="20" Margin="0,42,109,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="CountStudTextBox"/>
-
+                            
+                                <Label Content="Год"  HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="Year"  HorizontalAlignment="Right" Height="20" Margin="0,16,109,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="YearPlanTextBox"/>
+                                <Label Content="Количество Студентов"  HorizontalAlignment="Left" Margin="0,36,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="CountStuds"  HorizontalAlignment="Right" Height="20" Margin="0,42,109,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="CountStudTextBox"/>
 
 
 

@@ -149,9 +149,10 @@ namespace kursachMain.Windows
                 pact.ДолжностьИсполнителя = ImplementPosition.Text;
                 pact.НазваниеПредприятия = EnterpriceName.Text;
                 pact.УченаяСтепень = academicDegree.Text;
+                pact.Звание = Rank.Text;
                 pact.СерияПаспорта = PasportRange.Text;
                 pact.НомерПаспорта = PasportNomber.Text;
-                pact.ДатаЗаключения = DateOfGiven.Text;
+                pact.ДатаВыдачи = DateOfGiven.Text;
                 pact.ОрганВыдачи = AgencyOfGive.Text;
                 pact.ИдентификационныйНомер = ID_Nomber.Text;
                 pact.НомерСтраховогоСвидетельства = BelayNomber.Text;
@@ -169,21 +170,58 @@ namespace kursachMain.Windows
                 pact.ФИОЗавКафедрой= FIOHeadOfPulpit.Text;
                 pact.НазваниеКафедры = PulpitName.Text;
                 pact.РуководительПрактики = AdministratorOfEnterprice.Text;
-                
+                pact.ОбщаяСумма = TotalCost.Text;
+
+                context.Договоры.Add(pact);
+                context.SaveChanges();
                 MessageBox.Show("Добавлено");
             }
         }
 
         private void UpdatePact_Click(object sender, RoutedEventArgs e)
         {
-         
-         
-            var data = from x in kurs.Договоры select new { x.IDДоговора, x.IDСтудента, x.ДатаВыдачи, x.ДатаЗаключения, x.ДатаПриказа, x.ДатаПроведения,
-                x.ДолжностьИсполнителя, x.ДомашнийАдрес, x.Звание, x.КоличествоЧасов, x.МестоОсновнойРаботы, x.НазваниеКафедры, x.НазваниеПредприятия,
-                x.НомерДоговора, x.НомерПаспорта, x.НомерПриказа, x.НомерСтраховогоСвидетельства, x.ОбщаяСумма, x.СтоимостьОдногоЧаса, x.ОрганВыдачи,
-                x.Предприятия, x.РуководительПрактики, x.СерияПаспорта, x.Студенты, x.ТелДомашний, x.ТелРабочий, x.УченаяСтепень, x.ФИОЗавКафедрой,
-                x.ФИОИсполнителя, x.ФИООтделаКадров };
-            PactsDatagrid.ItemsSource = data.ToList();
+            try
+            {
+                var data = from x in kurs.Договоры
+                           select new
+                           {
+                               x.IDДоговора,
+                               x.IDСтудента,
+                               x.ДатаВыдачи,
+                               x.ДатаЗаключения,
+                               x.ДатаПриказа,
+                               x.ДатаПроведения,
+                               x.ДолжностьИсполнителя,
+                               x.ДомашнийАдрес,
+                               x.Звание,
+                               x.КоличествоЧасов,
+                               x.МестоОсновнойРаботы,
+                               x.НазваниеКафедры,
+                               x.НазваниеПредприятия,
+                               x.НомерДоговора,
+                               x.НомерПаспорта,
+                               x.НомерПриказа,
+                               x.НомерСтраховогоСвидетельства,
+                               x.ОбщаяСумма,
+                               x.СтоимостьОдногоЧаса,
+                               x.ОрганВыдачи,
+                               x.Предприятия,
+                               x.РуководительПрактики,
+                               x.СерияПаспорта,
+                             //  x.Студенты,
+                               x.ТелДомашний,
+                               x.ТелРабочий,
+                               x.УченаяСтепень,
+                               x.ФИОЗавКафедрой,
+                               x.ФИОИсполнителя,
+                               x.ФИООтделаКадров
+                           };
+                PactsDatagrid.ItemsSource = data.ToList();
+            }
+            catch(SqlException ex)
+            {
+                ex.GetBaseException();
+            }
         }
 
         private void Button_Save_Stud(object sender, RoutedEventArgs e)
@@ -420,6 +458,11 @@ namespace kursachMain.Windows
         }
 
         private void CostOfOneOur_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TotalCost_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
