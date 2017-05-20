@@ -71,6 +71,10 @@
                             </Label>
                             <TextBox x:Name="ID_Spec"  HorizontalAlignment="Right" Height="20" Margin="0,91,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="ID_spec_TextChanged"/>
                             <Label Content="ID Специальности"  HorizontalAlignment="Left" Margin="0,86,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="GrupNumberRegular" Content=""  HorizontalAlignment="Left" Margin="350,13,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.319,0.615" Width="275"/>
+                            <Label x:Name="KuratorFIORegular" Content=""  HorizontalAlignment="Left" Margin="350,40,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.319,0.615" Width="275"/>
+                            <Label x:Name="StarostaFIORegular" Content=""  HorizontalAlignment="Left" Margin="350,65,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.319,0.615" Width="275"/>
+                            <Label x:Name="IDSpecialRegular" Content=""  HorizontalAlignment="Left" Margin="350,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.319,0.615" Width="275"/>
 
                         </Grid>
 
@@ -126,6 +130,8 @@
                             <Label  HorizontalAlignment="Left" Margin="327,60,0,0" VerticalAlignment="Top">
 
                             </Label>
+                            <Label x:Name="numberspecialregular" Content="" HorizontalAlignment="Left" Margin="331,5,0,0" VerticalAlignment="Top" Width="254" Height="32"/>
+                            <Label x:Name="namespecialregular" Content="" HorizontalAlignment="Left" Margin="331,42,0,0" VerticalAlignment="Top" Width="254" Height="28"/>
                         </Grid>
 
 
@@ -135,7 +141,7 @@
                     <DataGrid x:Name="SpecDataGrid" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="259" Width="1050" HeadersVisibility="Column" MinColumnWidth="110.0" MaxColumnWidth="141.0" Margin="0,0,0,86" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" SelectionChanged="SpecDataGrid_SelectionChanged"/>
                     <Button x:Name="SaveSpec" Content="Сохранить" HorizontalAlignment="Left" Margin="8,222,0,0" VerticalAlignment="Top" Width="93" Click="SaveSpecButton_Click" AutomationProperties.Name="Save" Grid.ColumnSpan="2"/>
                     <Button x:Name="UpdateSpec" Content="Обновить" HorizontalAlignment="Left" Margin="106,222,0,0" VerticalAlignment="Top" Width="93" Click="OpdateSpecButton_Click_1" AutomationProperties.Name="Update"/>
-
+                    <Button x:Name="DeleteSpec" Content="Удалить" Margin="204,222,753,356" Click="DeleteSpec_Click"/>
                 </Grid>
 
             </TabItem>
@@ -154,6 +160,10 @@
                             <TextBox x:Name="PhoneStud"  HorizontalAlignment="Right" Height="20" Margin="0,66,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="PhoneNumberTextBox"/>
                             <Label Content="Номер Зачетки"  HorizontalAlignment="Left" Margin="0,85,0,0" VerticalAlignment="Top"/>
                             <TextBox x:Name="NomberOfRecordBookStud"  HorizontalAlignment="Right" Height="20" Margin="0,91,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="NumberOfRecordTextBox"/>
+                            <Label x:Name="StudFIORegular" Content="" HorizontalAlignment="Left" Margin="340,18,0,0" VerticalAlignment="Top" Width="250" Height="25"/>
+                            <Label x:Name="IDGrupStudRegular" HorizontalAlignment="Left" Margin="340,43,0,0" VerticalAlignment="Top" Width="250" Height="25"/>
+                            <Label x:Name="StudPhoneNumberRegular" Content="" HorizontalAlignment="Left" Margin="340,68,0,0" VerticalAlignment="Top" Width="250" Height="23"/>
+                            <Label x:Name="StudRecordBookRegular" Content="" HorizontalAlignment="Left" Margin="340,91,0,0" VerticalAlignment="Top" Width="250" Height="27"/>
 
                         </Grid>
                     </GroupBox>
@@ -168,7 +178,7 @@
 
             <TabItem Header="Договоры" Height="20" VerticalAlignment="Bottom" >
                 <Grid Height="700">
-                    <GroupBox Header="Добавить договор" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="900" Height="400">
+                    <GroupBox Header="Добавить договор" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Width="1000" Height="400">
                         <Grid>
                             <TextBox x:Name="PactNomber" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Номер заключения договора" VerticalAlignment="Top" Width="220" TextChanged="PactNumberTexBox"/>
                             <TextBox x:Name="DateOfContract" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" Text="Дата заключения договора" VerticalAlignment="Top" Width="220" TextChanged="CreatePactDateTextBox"/>
@@ -180,34 +190,64 @@
                             <TextBox x:Name="PasportNomber" HorizontalAlignment="Left" Height="23" Margin="10,234,0,0" TextWrapping="Wrap" Text="Номер паспорта" VerticalAlignment="Top" Width="220" TextChanged="PasportNuberTextBox"/>
                             <TextBox x:Name="AgencyOfGive" HorizontalAlignment="Left" Height="23" Margin="10,290,0,0" TextWrapping="Wrap" Text="Орган выдачи" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="AgencyOfGiveTextBox"/>
                             <TextBox x:Name="ID_Nomber" HorizontalAlignment="Left" Height="23" Margin="10,318,0,0" TextWrapping="Wrap" Text="Идентификационный номер" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="IDNumberTextBox"/>
-                            <TextBox x:Name="BelayNomber" HorizontalAlignment="Left" Height="23" Margin="300,10,0,0" TextWrapping="Wrap" Text="Номер страховки" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="BelayNumberTextBox"/>
-                            <TextBox x:Name="HomeAdress" HorizontalAlignment="Left" Height="23" Margin="300,38,0,0" TextWrapping="Wrap" Text="Домашний адрес" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="HomeAdressTextBox"/>
-                            <TextBox x:Name="WorkPhoneNumber" HorizontalAlignment="Left" Height="23" Margin="300,66,0,0" TextWrapping="Wrap" Text="Рабочий телефон" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="WorkPhoneTextBox"/>
-                            <TextBox x:Name="HomePhoneNumber" HorizontalAlignment="Left" Height="23" Margin="300,94,0,0" TextWrapping="Wrap" Text="Домашний телефон" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="HomePhoneTextBox"/>
-                            <TextBox x:Name="MainWorkPlace" HorizontalAlignment="Left" Height="23" Margin="300,122,0,0" TextWrapping="Wrap" Text="Основное место работы " VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="MainWorkPlaceTextBox"/>
-                            <TextBox x:Name="StudID" HorizontalAlignment="Left" Height="23" Margin="300,150,0,0" TextWrapping="Wrap" Text="идентификационный номер студента " VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="ID_StudTextBox"/>
-                            <TextBox x:Name="DateStartPractice" HorizontalAlignment="Left" Height="23" Margin="300,178,0,0" TextWrapping="Wrap" Text="Дата проведения практики" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="DateStartPracticeTextBox"/>
-                            <TextBox x:Name="OursCount" HorizontalAlignment="Left" Height="23" Margin="300,206,0,0" TextWrapping="Wrap" Text="Количество часов" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="OursCountTextBox"/>
-                            <TextBox x:Name="CostOfOneOur" HorizontalAlignment="Left" Height="23" Margin="300,234,0,0" TextWrapping="Wrap" Text="цена одного часа" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="CostOfOneOur_TextChanged"/>
-                            <TextBox x:Name="TotalCost" HorizontalAlignment="Left" Height="23" Margin="300,262,0,0" TextWrapping="Wrap" Text="Общая цена" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="TotalCost_TextChanged"/>
-                            <TextBox x:Name="OrderNumber" HorizontalAlignment="Left" Height="23" Margin="300,290,0,0" TextWrapping="Wrap" Text="Номер приказа" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="OrderNumberTextBox"/>
-                            <TextBox x:Name="FIOHumanResourcesDepartment" HorizontalAlignment="Left" Height="23" Margin="590,17,0,0" TextWrapping="Wrap" Text="Ф.И.О отдела кадров" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="FIOHumanResourcesDepartmentTextBox"/>
-                            <TextBox x:Name="FIOHeadOfPulpit" HorizontalAlignment="Left" Height="23" Margin="590,45,0,0" TextWrapping="Wrap" Text="Ф.И.О зав кафедрой" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="FIOHeadOfPulpitTextBox"/>
-                            <TextBox x:Name="PulpitName" HorizontalAlignment="Left" Height="23" Margin="590,73,0,0" TextWrapping="Wrap" Text="Название кафедры" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="PulpitNameTextBox"/>
-                            <TextBox x:Name="AdministratorOfEnterprice" HorizontalAlignment="Left" Height="23" Margin="590,101,0,0" TextWrapping="Wrap" Text="Руководитель предприятия" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="AdministratorOfEnterpriceTextBox"/>
+                            <TextBox x:Name="BelayNomber" HorizontalAlignment="Left" Height="23" Margin="331,10,0,0" TextWrapping="Wrap" Text="Номер страховки" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="BelayNumberTextBox"/>
+                            <TextBox x:Name="HomeAdress" HorizontalAlignment="Left" Height="23" Margin="331,38,0,0" TextWrapping="Wrap" Text="Домашний адрес" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="HomeAdressTextBox"/>
+                            <TextBox x:Name="WorkPhoneNumber" HorizontalAlignment="Left" Height="23" Margin="331,66,0,0" TextWrapping="Wrap" Text="Рабочий телефон" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="WorkPhoneTextBox"/>
+                            <TextBox x:Name="HomePhoneNumber" HorizontalAlignment="Left" Height="23" Margin="331,94,0,0" TextWrapping="Wrap" Text="Домашний телефон" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="HomePhoneTextBox"/>
+                            <TextBox x:Name="MainWorkPlace" HorizontalAlignment="Left" Height="23" Margin="331,122,0,0" TextWrapping="Wrap" Text="Основное место работы " VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="MainWorkPlaceTextBox"/>
+                            <TextBox x:Name="StudID" HorizontalAlignment="Left" Height="23" Margin="331,150,0,0" TextWrapping="Wrap" Text="идентификационный номер студента " VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="ID_StudTextBox"/>
+                            <TextBox x:Name="DateStartPractice" HorizontalAlignment="Left" Height="23" Margin="331,178,0,0" TextWrapping="Wrap" Text="Дата проведения практики" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="DateStartPracticeTextBox"/>
+                            <TextBox x:Name="OursCount" HorizontalAlignment="Left" Height="23" Margin="331,206,0,0" TextWrapping="Wrap" Text="Количество часов" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="OursCountTextBox"/>
+                            <TextBox x:Name="CostOfOneOur" HorizontalAlignment="Left" Height="23" Margin="331,234,0,0" TextWrapping="Wrap" Text="цена одного часа" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="CostOfOneOur_TextChanged"/>
+                            <TextBox x:Name="TotalCost" HorizontalAlignment="Left" Height="23" Margin="331,262,0,0" TextWrapping="Wrap" Text="Общая цена" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="TotalCost_TextChanged"/>
+                            <TextBox x:Name="OrderNumber" HorizontalAlignment="Left" Height="23" Margin="331,290,0,0" TextWrapping="Wrap" Text="Номер приказа" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="OrderNumberTextBox"/>
+                            <TextBox x:Name="FIOHumanResourcesDepartment" HorizontalAlignment="Left" Height="23" Margin="666,17,0,0" TextWrapping="Wrap" Text="Ф.И.О отдела кадров" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="FIOHumanResourcesDepartmentTextBox"/>
+                            <TextBox x:Name="FIOHeadOfPulpit" HorizontalAlignment="Left" Height="23" Margin="666,45,0,0" TextWrapping="Wrap" Text="Ф.И.О зав кафедрой" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="FIOHeadOfPulpitTextBox"/>
+                            <TextBox x:Name="PulpitName" HorizontalAlignment="Left" Height="23" Margin="666,73,0,0" TextWrapping="Wrap" Text="Название кафедры" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="PulpitNameTextBox"/>
+                            <TextBox x:Name="AdministratorOfEnterprice" HorizontalAlignment="Left" Height="23" Margin="666,101,0,0" TextWrapping="Wrap" Text="Руководитель предприятия" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="AdministratorOfEnterpriceTextBox"/>
                             <TextBox x:Name="academicDegree" HorizontalAlignment="Left" Height="23" Margin="10,150,0,0" TextWrapping="Wrap" Text="Ученая степень" VerticalAlignment="Top" Width="220" TextChanged="AcademicDegreeTextBox"/>
                             <TextBox x:Name="DateOfGiven" HorizontalAlignment="Left" Height="23" Margin="10,262,0,0" TextWrapping="Wrap" Text="Дата получения договора" VerticalAlignment="Top" Width="220" TextChanged="DateOfGivenTextBox"/>
-                            <TextBox x:Name="OrderDate" HorizontalAlignment="Left" Height="23" Margin="300,318,0,0" TextWrapping="Wrap" Text="Дата приказа" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="OrderDateTextBox"/>
+                            <TextBox x:Name="OrderDate" HorizontalAlignment="Left" Height="23" Margin="331,318,0,0" TextWrapping="Wrap" Text="Дата приказа" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="OrderDateTextBox"/>
+                            <Label x:Name="PactNumberRegular" Content="" HorizontalAlignment="Left" Margin="235,10,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="CreateDatePactRegular" HorizontalAlignment="Left" Margin="235,41,0,0" VerticalAlignment="Top" Width="91" Height="20"/>
+                            <Label x:Name="FIOOfExecutorRegular" Content="" HorizontalAlignment="Left" Margin="235,67,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="ExecutorRankRegular" Content="" HorizontalAlignment="Left" Margin="235,98,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="EnterpriceNameregular" Content="" HorizontalAlignment="Left" Margin="235,124,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="AcademcDegreeRegular" Content="" HorizontalAlignment="Left" Margin="235,153,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="RankRegular" Content="" HorizontalAlignment="Left" Margin="235,181,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="PasportSerRegular" Content="" HorizontalAlignment="Left" Margin="235,207,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="PasportNumberRegular" Content="" HorizontalAlignment="Left" Margin="235,234,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="DateOfTakenPactRegular" Content="" HorizontalAlignment="Left" Margin="235,260,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="AgencyOfGivenRegular" Content="" HorizontalAlignment="Left" Margin="235,288,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="IDOfPactRegular" Content="" HorizontalAlignment="Left" Margin="235,315,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="belayNumberRegular" Content="" HorizontalAlignment="Left" Margin="556,10,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="HomeAdressRegular" Content="" HorizontalAlignment="Left" Margin="556,41,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="WorkPhoneRegular" Content="" HorizontalAlignment="Left" Margin="556,66,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="HomePhoneRegular" Content="" HorizontalAlignment="Left" Margin="556,94,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="MainWorkPlaceRegular" Content="" HorizontalAlignment="Left" Margin="556,122,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="IDStudRegular" Content="" HorizontalAlignment="Left" Margin="556,153,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="DatePracticeRegular" Content="" HorizontalAlignment="Left" Margin="556,179,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="HoursCountRegular" Content="" HorizontalAlignment="Left" Margin="556,203,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="CostOfOneOurRegular" Content="" HorizontalAlignment="Left" Margin="556,231,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="OurCountRegular" Content="" HorizontalAlignment="Left" Margin="556,262,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="PactNumerRegular" Content="" HorizontalAlignment="Left" Margin="556,287,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="PactDateRegular" Content="" HorizontalAlignment="Left" Margin="556,315,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="FIOHumanResDepartmentRegular" Content="" HorizontalAlignment="Left" Margin="891,18,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="FIOZavKafedroyRegular" Content="" HorizontalAlignment="Left" Margin="891,45,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="PulpitNameRegular" Content="" HorizontalAlignment="Left" Margin="891,73,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="EnterpriceLeaderRegular" Content="" HorizontalAlignment="Left" Margin="891,99,0,0" VerticalAlignment="Top" Width="91"/>
 
                         </Grid>
                     </GroupBox>
                     <Button x:Name="AddPact" Content="Добавить" HorizontalAlignment="Left" Margin="10,422,0,0" VerticalAlignment="Top" Width="91" Click="AddPact_Click"/>
                     <Button x:Name="UpdatePact" Content="Обновить" HorizontalAlignment="Left" Margin="115,422,0,0" VerticalAlignment="Top" Width="91" Click="UpdatePact_Click"/>
+
                     <DataGrid x:Name="PactsDatagrid" Margin="10,449,-177,81" SelectionChanged="PactsDatagrid_SelectionChanged"/>
                 </Grid>
 
 
             </TabItem>
+
 
 
 

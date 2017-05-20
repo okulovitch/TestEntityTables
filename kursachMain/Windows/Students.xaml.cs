@@ -16,6 +16,8 @@ using kursachMain.Models;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Text.RegularExpressions;
+using System.ComponentModel.DataAnnotations;
 
 namespace kursachMain.Windows 
 {
@@ -29,11 +31,11 @@ namespace kursachMain.Windows
         public Students()
         {
             InitializeComponent();
-       
-             //dbGrups = new GrupsContext();
+
+            //dbGrups = new GrupsContext();
             // dbGrups.Grup.Load();
-           //StudentsDataGrid.ItemsSource = dbGrups.Grup.Local.ToBindingList();// устанавливаем привязку к кэшу
-          //  this.Closing += Students_Closing;
+            //StudentsDataGrid.ItemsSource = dbGrups.Grup.Local.ToBindingList();// устанавливаем привязку к кэшу
+            //  this.Closing += Students_Closing;
         }
         //private void Students_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         //{
@@ -56,7 +58,7 @@ namespace kursachMain.Windows
 
         }
 
-   
+
 
         private void Addres_TextChanged(object sender, System.Windows.Input.TextCompositionEventArgs e/*TextChangedEventArgs e*/)
         {
@@ -90,16 +92,66 @@ namespace kursachMain.Windows
 
         private void SaveSpecButton_Click(object sender, RoutedEventArgs e)
         {
-            using (var context = new kursachEntities())
+            try
             {
-                Специальности spec = new Специальности();
-                spec.НазваниеСпециальности = NameSpec.Text;
-                spec.НомерСпециальности = int.Parse(NomerSpec.Text);
-                context.Специальности.Add(spec);
-                context.SaveChanges();
+                string specialization = @"[0-9]";
+                string specializationname = @"[A-za-z]";
+                Regex rg = new Regex(specialization);
+                Regex rg2 = new Regex(specializationname);
+                using (var context = new kursachEntities())
+                {
+                    Специальности spec = new Специальности();
+                    //var max = (from x in Kurs.User select x.UserID).ToList().Max()
+                    //User us = new User();
+                    //us.UserID = max + 1;
+                    var max = (from x in kurs.Специальности select x.IDСпециальности).ToList().Max();
+                    spec.IDСпециальности = max + 1;
+                    if (!rg.IsMatch(NomerSpec.Text) && !rg2.IsMatch(NameSpec.Text))
+                    {
+                        numberspecialregular.Foreground = new SolidColorBrush(Colors.Red);
+                        numberspecialregular.Content = "Неверный номер специальности";
+                        namespecialregular.Foreground = new SolidColorBrush(Colors.Red);
+                        namespecialregular.Content = "Неверное название специальности";
+                    }
+                    else if (!rg.IsMatch(NomerSpec.Text))
+                    {
+                        numberspecialregular.Foreground = new SolidColorBrush(Colors.Red);
+                        numberspecialregular.Content = "Неверный номер специальности";
+                    }
+                    //else if (NomerSpec.Text.Length > 3 && NomerSpec.Text.Length < 10)
+                    //{
+                    //    numberspecialregular.Foreground = new SolidColorBrush(Colors.Red);
+                    //    numberspecialregular.Content = "Длина должна составлять от 3 до 10 символов";
+                    //}
+
+                    else if (!rg2.IsMatch(NameSpec.Text))
+                    {
+                        namespecialregular.Foreground = new SolidColorBrush(Colors.Red);
+                        namespecialregular.Content = "Неверное название специальности";
+                    }
+                    //else if (NameSpec.Text.Length > 3 && NameSpec.Text.Length < 10)
+                    //{
+                    //    namespecialregular.Foreground = new SolidColorBrush(Colors.Red);
+                    //    namespecialregular.Content = "Длина должна составлять от 3 до 10 символов";
+                    //}
+                    else
+                        {
+                            spec.НазваниеСпециальности = NameSpec.Text;
+                            spec.НомерСпециальности = int.Parse(NomerSpec.Text);
+                            context.Специальности.Add(spec);
+                        numberspecialregular.Content = " ";                  
+                        namespecialregular.Content = " ";
+                        context.SaveChanges();
+                     
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
-
         private void OpdateSpecButton_Click_1(object sender, RoutedEventArgs e)
         {
             var data = from x in kurs.Специальности select new {x.IDСпециальности,x.НазваниеСпециальности, x.НомерСпециальности };
@@ -108,18 +160,92 @@ namespace kursachMain.Windows
 
         private void SaveStudButton_Click(object sender, RoutedEventArgs e)
         {
-        
-            using (var context= new kursachEntities())
+         
+
+            try
             {
-                Студенты stud = new Студенты();
-                stud.ФИОСтудента = StudName.Text;
-                stud.IDГруппы = int.Parse(IDGrup.Text);  
-                stud.НомерТелефона = PhoneStud.Text;
-                stud.НомерЗачетки = NomberOfRecordBookStud.Text;
-                context.Студенты.Add(stud);
-                context.SaveChanges();
-                MessageBox.Show("saved");
+                string specialization = @"[0-9]";
+                string specializationname = @"[A-za-z]";
+                string spetializationphone = @"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$";
+
+                Regex numbers = new Regex(specialization);
+                Regex leters = new Regex(specializationname);
+                Regex Phone = new Regex(spetializationphone);
+         
+                //var contextt = new ValidationContext(Студенты);
+                using (var context = new kursachEntities())
+                {
+
+                    Студенты stud = new Студенты();
+                    var max = (from x in kurs.Студенты select x.IDСтудента).ToList().Max();
+                    stud.IDСтудента = max + 1;
+
+                    if (!leters.IsMatch(StudName.Text) && !numbers.IsMatch(IDGrup.Text) && !Phone.IsMatch(PhoneStud.Text) && !numbers.IsMatch(NomberOfRecordBookStud.Text))
+                    {
+                        StudFIORegular.Foreground = new SolidColorBrush(Colors.Red);
+                        StudFIORegular.Content = "используйте буквы A-z";
+                        IDGrupStudRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        IDGrupStudRegular.Content = "используйте числа 0-9";
+                        StudPhoneNumberRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        StudPhoneNumberRegular.Content = "используйте стандартные номера";
+                        StudRecordBookRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        StudRecordBookRegular.Content = "используйте числа 0-9";
+
+                    }
+                    else if (!leters.IsMatch(StudName.Text))
+                        {
+                        StudFIORegular.Foreground = new SolidColorBrush(Colors.Red);
+                        StudFIORegular.Content = "используйте буквы A-z";
+                         }
+                    else if (!numbers.IsMatch(IDGrup.Text))
+                    {
+                        IDGrupStudRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        IDGrupStudRegular.Content = "используйте числа 0-9";
+                    }
+                    else if (!numbers.IsMatch(PhoneStud.Text))
+                    {
+                        StudPhoneNumberRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        StudPhoneNumberRegular.Content = "используйте числа 0-9";
+                    }
+                    else if (!numbers.IsMatch(NomberOfRecordBookStud.Text))
+                    {
+                        StudRecordBookRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        StudRecordBookRegular.Content = "используйте числа 0-9";
+                    }
+                 //  else if(IDGrup.Text>)
+                    
+                    else
+                    {
+                        stud.ФИОСтудента = StudName.Text;
+                        stud.IDГруппы = int.Parse(IDGrup.Text);
+                        stud.НомерТелефона = PhoneStud.Text;
+                        stud.НомерЗачетки = NomberOfRecordBookStud.Text;
+                        context.Студенты.Add(stud);
+                        context.SaveChanges();
+                        MessageBox.Show("saved");              
+                        StudFIORegular.Content = "";             
+                        IDGrupStudRegular.Content = "";     
+                        StudPhoneNumberRegular.Content = "";       
+                        StudRecordBookRegular.Content = "";
+                    }
+
+                    //var results = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
+                    //var ValCont = new ValidationContext(stud);
+                    //if (!Validator.TryValidateObject(stud,ValCont, results, true))
+                    //{
+                    //    foreach(var error in results)
+                    //    {
+                    //        MessageBox.Show(error.ErrorMessage);
+                    //    }
+                    //}
+                        
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
 
 
         }
@@ -140,41 +266,73 @@ namespace kursachMain.Windows
 
         private void AddPact_Click(object sender, RoutedEventArgs e)
         {
-            using (var context = new kursachEntities())
+            string specialization = @"[0-9]";
+            string specializationname = @"[A-za-z]";
+            string spetializationphone = @"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$";
+            string spetializationdate = @"(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d";//Дата в формате DD/MM/YYYY:
+            Regex numbers = new Regex(specialization);
+            Regex leters = new Regex(specializationname);
+            Regex Phone = new Regex(spetializationphone);
+            Regex Date = new Regex(spetializationdate);
+            try
             {
-                Договоры pact = new Договоры();
-                pact.НомерДоговора = PactNomber.Text;
-                pact.ДатаЗаключения = DateOfContract.Text;
-                pact.ФИОИсполнителя = ImplementerName.Text;
-                pact.ДолжностьИсполнителя = ImplementPosition.Text;
-                pact.НазваниеПредприятия = EnterpriceName.Text;
-                pact.УченаяСтепень = academicDegree.Text;
-                pact.Звание = Rank.Text;
-                pact.СерияПаспорта = PasportRange.Text;
-                pact.НомерПаспорта = PasportNomber.Text;
-                pact.ДатаВыдачи = DateOfGiven.Text;
-                pact.ОрганВыдачи = AgencyOfGive.Text;
-                pact.ИдентификационныйНомер = ID_Nomber.Text;
-                pact.НомерСтраховогоСвидетельства = BelayNomber.Text;
-                pact.ДомашнийАдрес = HomeAdress.Text;
-                pact.ТелРабочий = WorkPhoneNumber.Text;
-                pact.ТелДомашний = HomePhoneNumber.Text;
-                pact.МестоОсновнойРаботы = MainWorkPlace.Text;
-                pact.IDСтудента = int.Parse(StudID.Text);
-                pact.ДатаПроведения = DateStartPractice.Text;
-                pact.КоличествоЧасов = OursCount.Text;
-                pact.СтоимостьОдногоЧаса = CostOfOneOur.Text;
-                pact.НомерПриказа = OrderNumber.Text;
-                pact.ДатаПриказа = OrderDate.Text;
-                pact.ФИООтделаКадров = FIOHumanResourcesDepartment.Text;
-                pact.ФИОЗавКафедрой= FIOHeadOfPulpit.Text;
-                pact.НазваниеКафедры = PulpitName.Text;
-                pact.РуководительПрактики = AdministratorOfEnterprice.Text;
-                pact.ОбщаяСумма = TotalCost.Text;
+                using (var context = new kursachEntities())
+                {
+                    Договоры pacts = new Договоры();
+                    var max = (from x in kurs.Договоры select x.IDДоговора).ToList().Max();
+                    pacts.IDДоговора = max + 1;
 
-                context.Договоры.Add(pact);
-                context.SaveChanges();
-                MessageBox.Show("Добавлено");
+                    if (!numbers.IsMatch(PactNomber.Text))
+                    {
+                        PactNumberRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        PactNumberRegular.Content = "числа 0-9";
+                    }
+                    else if (!Date.IsMatch(DateOfContract.Text))
+                    {
+                        CreateDatePactRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        CreateDatePactRegular.Content = "DD/MM/YYYY";
+                    }
+                    else {
+                        Договоры pact = new Договоры();
+                        pact.НомерДоговора = PactNomber.Text;
+                        pact.ДатаЗаключения = DateOfContract.Text;
+                        pact.ФИОИсполнителя = ImplementerName.Text;
+                        pact.ДолжностьИсполнителя = ImplementPosition.Text;
+                        pact.НазваниеПредприятия = EnterpriceName.Text;
+                        pact.УченаяСтепень = academicDegree.Text;
+                        pact.Звание = Rank.Text;
+                        pact.СерияПаспорта = PasportRange.Text;
+                        pact.НомерПаспорта = PasportNomber.Text;
+                        pact.ДатаВыдачи = DateOfGiven.Text;
+                        pact.ОрганВыдачи = AgencyOfGive.Text;
+                        pact.ИдентификационныйНомер = ID_Nomber.Text;
+                        pact.НомерСтраховогоСвидетельства = BelayNomber.Text;
+                        pact.ДомашнийАдрес = HomeAdress.Text;
+                        pact.ТелРабочий = WorkPhoneNumber.Text;
+                        pact.ТелДомашний = HomePhoneNumber.Text;
+                        pact.МестоОсновнойРаботы = MainWorkPlace.Text;
+                        pact.IDСтудента = int.Parse(StudID.Text);
+                        pact.ДатаПроведения = DateStartPractice.Text;
+                        pact.КоличествоЧасов = OursCount.Text;
+                        pact.СтоимостьОдногоЧаса = CostOfOneOur.Text;
+                        pact.НомерПриказа = OrderNumber.Text;
+                        pact.ДатаПриказа = OrderDate.Text;
+                        pact.ФИООтделаКадров = FIOHumanResourcesDepartment.Text;
+                        pact.ФИОЗавКафедрой = FIOHeadOfPulpit.Text;
+                        pact.НазваниеКафедры = PulpitName.Text;
+                        pact.РуководительПрактики = AdministratorOfEnterprice.Text;
+                        pact.ОбщаяСумма = TotalCost.Text;
+
+                        context.Договоры.Add(pact);
+                        context.SaveChanges();
+                        MessageBox.Show("Добавлено");
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -230,15 +388,61 @@ namespace kursachMain.Windows
         
             using (var context = new kursachEntities())
             {
-                Группы grups = new Группы();
-                grups.НомерГруппы =int.Parse( nomberGr.Text);             
-                grups.ФИОКуратора = Kurator.Text;
-                grups.ФИОСтаросты = Starosta.Text;
-     
-                grups.IDСпециальности = int.Parse(ID_Spec.Text);
-                context.Группы.Add(grups);
-                context.SaveChanges();
-                MessageBox.Show("Saved");
+                string specialization = @"[0-9]";
+                string specializationname = @"[A-Za-z]";
+
+                Regex numbers = new Regex(specialization);
+                Regex leters = new Regex(specializationname);
+
+                if (!numbers.IsMatch(nomberGr.Text) && !leters.IsMatch(Kurator.Text) && !leters.IsMatch(Starosta.Text) && !numbers.IsMatch(ID_Spec.Text))
+                {
+                    GrupNumberRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    GrupNumberRegular.Content = "используйте числа 0-9";
+                    KuratorFIORegular.Foreground = new SolidColorBrush(Colors.Red);
+                    KuratorFIORegular.Content = "используйте буквы A-z";
+                    StarostaFIORegular.Foreground = new SolidColorBrush(Colors.Red);
+                    StarostaFIORegular.Content = "используйте буквы A-z";
+                    IDSpecialRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    IDSpecialRegular.Content = "используйте числа 0-9";
+
+                }
+                else if (!numbers.IsMatch(nomberGr.Text))
+                {
+                    GrupNumberRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    GrupNumberRegular.Content = "используйте числа 0-9";
+                }
+                else if (!leters.IsMatch(Kurator.Text))
+                {
+                    KuratorFIORegular.Foreground = new SolidColorBrush(Colors.Red);
+                    KuratorFIORegular.Content = "используйте буквы A-z";
+                }
+                else if (!leters.IsMatch(Starosta.Text))
+                {
+                    StarostaFIORegular.Foreground = new SolidColorBrush(Colors.Red);
+                    StarostaFIORegular.Content = "используйте буквы A-z";
+                }
+                else if (!numbers.IsMatch(ID_Spec.Text))
+                {
+                    IDSpecialRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    IDSpecialRegular.Content = "используйте числа 0-9";
+                }
+                else
+                {
+                    Группы grups = new Группы();
+                    grups.НомерГруппы = int.Parse(nomberGr.Text);
+                    grups.ФИОКуратора = Kurator.Text;
+                    grups.ФИОСтаросты = Starosta.Text;
+
+                    grups.IDСпециальности = int.Parse(ID_Spec.Text);
+                    context.Группы.Add(grups);
+                    context.SaveChanges();
+                    MessageBox.Show("Saved");
+                    IDSpecialRegular.Content = "";
+                    StarostaFIORegular.Content = "";
+                    KuratorFIORegular.Content = "";
+                    GrupNumberRegular.Content = "";
+
+                }
             }
         }
 
@@ -248,7 +452,6 @@ namespace kursachMain.Windows
             var data = from x in kurs.Группы select new { x.IDГруппы, x.НомерГруппы, x.ФИОКуратора, x.ФИОСтаросты, x.IDСпециальности };
             StudentsDataGrid.ItemsSource = data.ToList();
            // SpecDataGrid.ItemsSource = data.ToList();
-
 
         }
 
@@ -264,9 +467,7 @@ namespace kursachMain.Windows
 
         }
 
-    
-
-
+   
       
 
         private void NumberSpecTextBox(object sender, TextChangedEventArgs e)
@@ -414,9 +615,6 @@ namespace kursachMain.Windows
 
         }
 
-
-
-
         private void AdministratorOfEnterpriceTextBox(object sender, TextChangedEventArgs e)
         {
 
@@ -465,6 +663,14 @@ namespace kursachMain.Windows
         private void TotalCost_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void DeleteSpec_Click(object sender, RoutedEventArgs e)
+        {
+           using (var context=new kursachEntities())
+            {
+                
+            }
         }
     }
 }
