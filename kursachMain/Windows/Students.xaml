@@ -189,8 +189,8 @@
                             <TextBox x:Name="PasportRange" HorizontalAlignment="Left" Height="23" Margin="10,206,0,0" TextWrapping="Wrap" Text="Серия паспорта" VerticalAlignment="Top" Width="220" TextChanged="PasportSerTextBox"/>
                             <TextBox x:Name="PasportNomber" HorizontalAlignment="Left" Height="23" Margin="10,234,0,0" TextWrapping="Wrap" Text="Номер паспорта" VerticalAlignment="Top" Width="220" TextChanged="PasportNuberTextBox"/>
                             <TextBox x:Name="AgencyOfGive" HorizontalAlignment="Left" Height="23" Margin="10,290,0,0" TextWrapping="Wrap" Text="Орган выдачи" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="AgencyOfGiveTextBox"/>
-                            <TextBox x:Name="ID_Nomber" HorizontalAlignment="Left" Height="23" Margin="10,318,0,0" TextWrapping="Wrap" Text="Идентификационный номер" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="IDNumberTextBox"/>
-                            <TextBox x:Name="BelayNomber" HorizontalAlignment="Left" Height="23" Margin="331,10,0,0" TextWrapping="Wrap" Text="Номер страховки" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="BelayNumberTextBox"/>
+                           <TextBox x:Name="ID_Nomber" HorizontalAlignment="Left" Height="23" Margin="10,318,0,0" TextWrapping="Wrap" Text="Идентификационный номер" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="IDNumberTextBox"/>
+                             <TextBox x:Name="BelayNomber" HorizontalAlignment="Left" Height="23" Margin="331,10,0,0" TextWrapping="Wrap" Text="Номер страховки" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="BelayNumberTextBox"/>
                             <TextBox x:Name="HomeAdress" HorizontalAlignment="Left" Height="23" Margin="331,38,0,0" TextWrapping="Wrap" Text="Домашний адрес" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="HomeAdressTextBox"/>
                             <TextBox x:Name="WorkPhoneNumber" HorizontalAlignment="Left" Height="23" Margin="331,66,0,0" TextWrapping="Wrap" Text="Рабочий телефон" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="WorkPhoneTextBox"/>
                             <TextBox x:Name="HomePhoneNumber" HorizontalAlignment="Left" Height="23" Margin="331,94,0,0" TextWrapping="Wrap" Text="Домашний телефон" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="HomePhoneTextBox"/>
@@ -209,7 +209,7 @@
                             <TextBox x:Name="DateOfGiven" HorizontalAlignment="Left" Height="23" Margin="10,262,0,0" TextWrapping="Wrap" Text="Дата получения договора" VerticalAlignment="Top" Width="220" TextChanged="DateOfGivenTextBox"/>
                             <TextBox x:Name="OrderDate" HorizontalAlignment="Left" Height="23" Margin="331,318,0,0" TextWrapping="Wrap" Text="Дата приказа" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,1.478" TextChanged="OrderDateTextBox"/>
                             <Label x:Name="PactNumberRegular" Content="" HorizontalAlignment="Left" Margin="235,10,0,0" VerticalAlignment="Top" Width="91"/>
-                            <Label x:Name="CreateDatePactRegular" HorizontalAlignment="Left" Margin="235,41,0,0" VerticalAlignment="Top" Width="91" Height="20"/>
+                            <Label x:Name="CreateDatePactRegular" HorizontalAlignment="Left" Margin="235,41,0,0" VerticalAlignment="Top" Width="91" Height="26"/>
                             <Label x:Name="FIOOfExecutorRegular" Content="" HorizontalAlignment="Left" Margin="235,67,0,0" VerticalAlignment="Top" Width="91"/>
                             <Label x:Name="ExecutorRankRegular" Content="" HorizontalAlignment="Left" Margin="235,98,0,0" VerticalAlignment="Top" Width="91"/>
                             <Label x:Name="EnterpriceNameregular" Content="" HorizontalAlignment="Left" Margin="235,124,0,0" VerticalAlignment="Top" Width="91"/>
@@ -219,7 +219,6 @@
                             <Label x:Name="PasportNumberRegular" Content="" HorizontalAlignment="Left" Margin="235,234,0,0" VerticalAlignment="Top" Width="91"/>
                             <Label x:Name="DateOfTakenPactRegular" Content="" HorizontalAlignment="Left" Margin="235,260,0,0" VerticalAlignment="Top" Width="91"/>
                             <Label x:Name="AgencyOfGivenRegular" Content="" HorizontalAlignment="Left" Margin="235,288,0,0" VerticalAlignment="Top" Width="91"/>
-                            <Label x:Name="IDOfPactRegular" Content="" HorizontalAlignment="Left" Margin="235,315,0,0" VerticalAlignment="Top" Width="91"/>
                             <Label x:Name="belayNumberRegular" Content="" HorizontalAlignment="Left" Margin="556,10,0,0" VerticalAlignment="Top" Width="91"/>
                             <Label x:Name="HomeAdressRegular" Content="" HorizontalAlignment="Left" Margin="556,41,0,0" VerticalAlignment="Top" Width="91"/>
                             <Label x:Name="WorkPhoneRegular" Content="" HorizontalAlignment="Left" Margin="556,66,0,0" VerticalAlignment="Top" Width="91"/>
@@ -236,6 +235,7 @@
                             <Label x:Name="FIOZavKafedroyRegular" Content="" HorizontalAlignment="Left" Margin="891,45,0,0" VerticalAlignment="Top" Width="91"/>
                             <Label x:Name="PulpitNameRegular" Content="" HorizontalAlignment="Left" Margin="891,73,0,0" VerticalAlignment="Top" Width="91"/>
                             <Label x:Name="EnterpriceLeaderRegular" Content="" HorizontalAlignment="Left" Margin="891,99,0,0" VerticalAlignment="Top" Width="91"/>
+                            <Label x:Name="ID_NumberRegular" Content="" HorizontalAlignment="Left" Margin="235,318,0,0" VerticalAlignment="Top" Width="91"/>
 
                         </Grid>
                     </GroupBox>

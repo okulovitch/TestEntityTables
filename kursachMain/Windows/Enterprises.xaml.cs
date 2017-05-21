@@ -14,6 +14,9 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Text.RegularExpressions;
+using System.ComponentModel.DataAnnotations;
+
 
 
 namespace kursachMain.Windows
@@ -151,13 +154,44 @@ namespace kursachMain.Windows
 
         private void Button_Click_savePlan(object sender, RoutedEventArgs e)
         {
+            string specializationYear = @"^[1-9][0-9]{3}$";
+            string spetializationStudCount = @"[0-9]";
+            Regex YearPlan = new Regex(specializationYear);
+            Regex StudCount = new Regex(spetializationStudCount);
             using (var context = new kursachEntities())
             {
+              
+              
                 ПланНабора plan = new ПланНабора();
-                plan.Год = Year.Text;
-                plan.МаксКолвоСтудентов = CountStuds.Text;
-                context.ПланНабора.Add(plan);
-                context.SaveChanges();
+                var max = (from x in kurs.ПланНабора select x.IDНабораНаГод).ToList().Max();
+                plan.IDНабораНаГод = max + 1;
+                if (!YearPlan.IsMatch(Year.Text) && (!StudCount.IsMatch(CountStuds.Text)))
+                {
+                   PlanYearRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    PlanYearRegular.Content = "неверный формат года";
+                   StudentsCountRegular.Foreground = new SolidColorBrush(Colors.Red);
+                   StudentsCountRegular.Content = "используйте числа 1-9";
+
+                }
+                else if (!YearPlan.IsMatch(Year.Text))
+                {
+                    PlanYearRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    PlanYearRegular.Content = "неверный формат года";
+                }
+                else if (!StudCount.IsMatch(CountStuds.Text))
+                {
+                    StudentsCountRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    StudentsCountRegular.Content = "используйте числа 1-9";
+                }
+                else
+                {
+                    plan.Год = Year.Text;
+                    plan.МаксКолвоСтудентов = CountStuds.Text;
+                    context.ПланНабора.Add(plan);
+                    context.SaveChanges();
+                    StudentsCountRegular.Content = "";
+                    PlanYearRegular.Content = "";
+                }
             }
               
             
@@ -191,24 +225,101 @@ namespace kursachMain.Windows
 
         private void SaveEnterpriceBtn(object sender, RoutedEventArgs e)
         {
+            string specializationLeters = @"[a-zA-Z]";
+            string numbers = @"[0-9]";
+            string spetializationMail = @"[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+";
+            string spetializationPhone = @"(8 0(25|29|33|34) ([0-9]{3}( [0-9]{2}){2}))";
+            string spetializationAdress = @"[a-zA-z0-9]";
+            Regex Leters = new Regex(specializationLeters);
+            Regex NumbersEnterprice = new Regex(numbers);
+            Regex MailEntrprice = new Regex(spetializationMail);
+            Regex Adress = new Regex(spetializationAdress);
+            Regex PhoneReg = new Regex(spetializationPhone);
             using (var context = new kursachEntities())
             {
                 Предприятия enterpr = new Предприятия();
-                if (NameBox.Text == string.Empty)
+                var max = (from x in kurs.Предприятия select x.ID_предприятия).ToList().Max();
+                enterpr.ID_предприятия = max + 1;
+                if (!Leters.IsMatch(NameBox.Text) && (!NumbersEnterprice.IsMatch(YNPBox.Text)) && (!Adress.IsMatch(Addres.Text))
+                    && (!PhoneReg.IsMatch(Phone.Text)) && (!MailEntrprice.IsMatch(Email.Text)) && (!Leters.IsMatch(ContactFaceBox.Text))
+                    && (!NumbersEnterprice.IsMatch(IDEnterpricesPacts.Text)) && (!NumbersEnterprice.IsMatch(IDOfTakingOnYear.Text)))
                 {
-               
+                    NameRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    NameRegular.Content = "буквы A-z";
+                    YNPRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    YNPRegular.Content = "цифры 0-9";
+                    AdresRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    AdresRegular.Content = "используйте стандартный адрес";
+                    PhoneRegular.Foreground =new SolidColorBrush(Colors.Red);
+                    PhoneRegular.Content = "используйте стандартный номер";
+                    MailRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    MailRegular.Content = "логин@поддомен.домен";
+                    ContactFaceRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    ContactFaceRegular.Content = "буквы A-z";
+                    IDPactsRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    IDPactsRegular.Content = "Числа 0-9";
+                    IDTakeOnYearRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    IDTakeOnYearRegular.Content = "числа 0-9";
                 }
-                enterpr.Название = NameBox.Text;
-                enterpr.УНП = YNPBox.Text;
-                enterpr.Адрес = Addres.Text;
-                enterpr.Телефон = Phone.Text;
-                enterpr.Эл__почта = Email.Text;
-                enterpr.Контактное_лицо = ContactFaceBox.Text;
-                enterpr.IDЗаключенныхДоговоров = int.Parse(IDEnterpricesPacts.Text);
-                enterpr.IDНабораНаГод =  int.Parse(IDOfTakingOnYear.Text);
-                context.Предприятия.Add(enterpr);
-                context.SaveChanges();
+                else if (!Leters.IsMatch(NameBox.Text)){
+                    NameRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    NameRegular.Content = "буквы A-z";
+                }
+                else if (!NumbersEnterprice.IsMatch(YNPBox.Text))
+                {
+                    YNPRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    YNPRegular.Content = "цифры 0-9";
+                }
+                else if (!Adress.IsMatch(Addres.Text))
+                {
+                    AdresRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    AdresRegular.Content = "используйте стандартный адрес";
+                }
+                else if (!PhoneReg.IsMatch(Phone.Text))
+                {
+                    PhoneRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    PhoneRegular.Content = "используйте стандартный номер";
+                }
+                else if (!MailEntrprice.IsMatch(Email.Text))
+                {
+                    MailRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    MailRegular.Content = "логин@поддомен.домен";
+                }
+                else if (!Leters.IsMatch(ContactFaceBox.Text))
+                {
+                    ContactFaceRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    ContactFaceRegular.Content = "буквы A-z";
+                }
+                else if (!NumbersEnterprice.IsMatch(IDEnterpricesPacts.Text))
+                {
+                    IDTakeOnYearRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    IDTakeOnYearRegular.Content = "числа 0-9";
+                }
+
+           //     else if(!Leters.IsMatch(NameBox.Text)
+                else
+                {
+
+                    enterpr.Название = NameBox.Text;
+                    enterpr.УНП = YNPBox.Text;
+                    enterpr.Адрес = Addres.Text;
+                    enterpr.Телефон = Phone.Text;
+                    enterpr.Эл__почта = Email.Text;
+                    enterpr.Контактное_лицо = ContactFaceBox.Text;
+                    enterpr.IDЗаключенныхДоговоров = int.Parse(IDEnterpricesPacts.Text);
+                    enterpr.IDНабораНаГод = int.Parse(IDOfTakingOnYear.Text);
+                    context.Предприятия.Add(enterpr);
+                    context.SaveChanges();
+                    NameRegular.Content = "";
+                    YNPRegular.Content = "";
+                    AdresRegular.Content = "";
+                    PhoneRegular.Content = "";
+                    MailRegular.Content = "";
+                    ContactFaceRegular.Content = "";
+                    IDTakeOnYearRegular.Content = "";
+                }
             }
+
         }
 
         private void UpdateEnterpriceBtn(object sender, RoutedEventArgs e)

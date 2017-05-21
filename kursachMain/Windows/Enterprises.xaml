@@ -7,9 +7,9 @@
         xmlns:kursachMain="clr-namespace:kursachMain" x:Class="kursachMain.Windows.Enterprises"
         mc:Ignorable="d"
         Title="Enterprises" Height="600" Width="1100" Loaded="Window_Loaded_1">
-    
+
     <Grid>
-        <TabControl Margin="0,5,20,15" BorderThickness="0" Background="LightGray" SelectionChanged="TabControl_SelectionChanged">
+        <TabControl Margin="2,5,18,15" BorderThickness="0" Background="LightGray" SelectionChanged="TabControl_SelectionChanged">
             <TabControl.Resources>
                 <Style TargetType="TabItem">
                     <Setter Property="Template">
@@ -38,28 +38,36 @@
             <TabItem Header="Предприятия">
                 <Grid Height="600">
 
-                    <GroupBox  HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Width="700" Height="200" Grid.ColumnSpan="2">
+                    <GroupBox  HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Width="900" Height="200" Grid.ColumnSpan="2">
                         <Grid>
                             <Label Content="Название"  HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="NameBox"  HorizontalAlignment="Right" Height="20" Margin="0,16,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Addres_TextChanged"/>
+                            <TextBox x:Name="NameBox"  HorizontalAlignment="Right" Height="20" Margin="0,16,600,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Addres_TextChanged"/>
                             <Label Content="УНП"  HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="YNPBox"  HorizontalAlignment="Right" Height="20" Margin="0,41,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Addres_TextChanged"/>
+                            <TextBox x:Name="YNPBox"  HorizontalAlignment="Right" Height="20" Margin="0,41,600,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Addres_TextChanged"/>
                             <Label Content="Адрес"  HorizontalAlignment="Left" Margin="0,60,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="Addres"  HorizontalAlignment="Right" Height="20" Margin="0,66,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Addres_TextChanged"/>
+                            <TextBox x:Name="Addres"  HorizontalAlignment="Right" Height="20" Margin="0,66,600,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Addres_TextChanged"/>
                             <Label Content="Телефон"  HorizontalAlignment="Left" Margin="0,88,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="Phone"  HorizontalAlignment="Right" Height="20" Margin="0,94,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Phone_TextChanged"/>
+                            <TextBox x:Name="Phone"  HorizontalAlignment="Right" Height="20" Margin="0,91,600,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Phone_TextChanged"/>
                             <Label Content=" почта"  HorizontalAlignment="Left" Margin="0,115,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="Email"  HorizontalAlignment="Right" Height="20" Margin="0,121,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Email_TextChanged"/>
+                            <TextBox x:Name="Email"  HorizontalAlignment="Right" Height="20" Margin="0,116,600,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="Email_TextChanged"/>
                             <Label Content="Контактное лицо"  HorizontalAlignment="Left" Margin="-6,139,0,0" VerticalAlignment="Top" Width="107"/>
-                            <TextBox x:Name="ContactFaceBox"  HorizontalAlignment="Right" Height="20" Margin="0,148,398,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="ContactFace_TextChanged"/>
-                            <Label Content="ID Заключенных договоров"  HorizontalAlignment="Left" Margin="309,18,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="IDEnterpricesPacts"  HorizontalAlignment="Right" Height="20" Margin="0,23,48,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="IDEnterpricesPactsTextBox"/>
-                            <Label Content="ID Набора на год"  HorizontalAlignment="Left" Margin="308,48,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="IDOfTakingOnYear"  HorizontalAlignment="Right" Height="20" Margin="0,50,48,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="IDOfTakingOnYearTextBox"/>
+                            <TextBox x:Name="ContactFaceBox"  HorizontalAlignment="Right" Height="20" Margin="0,141,600,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="ContactFace_TextChanged"/>
+                            <Label Content="ID Заключенных договоров"  HorizontalAlignment="Left" Margin="428,23,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="IDEnterpricesPacts"  HorizontalAlignment="Right" Height="20" Margin="0,23,105,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="IDEnterpricesPactsTextBox"/>
+                            <Label Content="ID Набора на год"  HorizontalAlignment="Left" Margin="428,54,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.125,0.538"/>
+                            <TextBox x:Name="IDOfTakingOnYear"  HorizontalAlignment="Right" Height="20" Margin="0,55,105,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="IDOfTakingOnYearTextBox"/>
 
                             <Label  HorizontalAlignment="Left" Margin="327,60,0,0" VerticalAlignment="Top">
 
                             </Label>
+                            <Label x:Name="NameRegular" Content=""  HorizontalAlignment="Left" Margin="293,12,0,0" VerticalAlignment="Top" Width="130"/>
+                            <Label x:Name="YNPRegular" Content=""  HorizontalAlignment="Left" Margin="293,41,0,0" VerticalAlignment="Top" Width="130"/>
+                            <Label x:Name="AdresRegular" Content=""  HorizontalAlignment="Left" Margin="293,62,0,0" VerticalAlignment="Top" Width="130"/>
+                            <Label x:Name="PhoneRegular" Content=""  HorizontalAlignment="Left" Margin="293,88,0,0" VerticalAlignment="Top" Width="130"/>
+                            <Label x:Name="MailRegular" Content=""  HorizontalAlignment="Left" Margin="293,113,0,0" VerticalAlignment="Top" Width="130"/>
+                            <Label x:Name="ContactFaceRegular" Content=""  HorizontalAlignment="Left" Margin="293,139,0,0" VerticalAlignment="Top" Width="130"/>
+                            <Label x:Name="IDPactsRegular" Content=""  HorizontalAlignment="Left" Margin="788,23,0,0" VerticalAlignment="Top" Width="90"/>
+                            <Label x:Name="IDTakeOnYearRegular" Content=""  HorizontalAlignment="Left" Margin="788,55,0,0" VerticalAlignment="Top" Width="90"/>
 
 
 
@@ -80,13 +88,15 @@
             <TabItem Header="План набора">
                 <Grid Height="600">
 
-                    <GroupBox Header="add plan" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Width="451" Height="200" Grid.ColumnSpan="2">
+                    <GroupBox Header="add plan" HorizontalAlignment="Left" Margin="2,5,0,0" VerticalAlignment="Top" Width="500" Height="200">
                         <Grid>
-                            
-                                <Label Content="Год"  HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
-                                <TextBox x:Name="Year"  HorizontalAlignment="Right" Height="20" Margin="0,16,109,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="YearPlanTextBox"/>
-                                <Label Content="Количество Студентов"  HorizontalAlignment="Left" Margin="0,36,0,0" VerticalAlignment="Top"/>
-                                <TextBox x:Name="CountStuds"  HorizontalAlignment="Right" Height="20" Margin="0,42,109,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="CountStudTextBox"/>
+
+                            <Label x:Name="PlanYearRegular" Content=""  HorizontalAlignment="Left" Margin="326,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.759,0.692" Width="140"/>
+                            <TextBox x:Name="Year"  HorizontalAlignment="Right" Height="20" Margin="0,16,167,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="YearPlanTextBox"/>
+                            <Label Content="Количество Студентов"  HorizontalAlignment="Left" Margin="0,36,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="CountStuds"  HorizontalAlignment="Right" Height="20" Margin="0,41,167,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TextChanged="CountStudTextBox"/>
+                            <Label x:Name="StudentsCountRegular" Content=""  HorizontalAlignment="Left" Margin="321,41,0,0" VerticalAlignment="Top" Width="145"/>
+                            <Label Content="Год"  HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.759,0.692" Width="94"/>
 
 
 
@@ -104,7 +114,7 @@
             </TabItem>
 
 
-         
+
 
 
 

@@ -166,7 +166,7 @@ namespace kursachMain.Windows
             {
                 string specialization = @"[0-9]";
                 string specializationname = @"[A-za-z]";
-                string spetializationphone = @"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$";
+                string spetializationphone = @"(8 0(25|29|33|34) ([0-9]{3}( [0-9]{2}){2}))";
 
                 Regex numbers = new Regex(specialization);
                 Regex leters = new Regex(specializationname);
@@ -268,12 +268,18 @@ namespace kursachMain.Windows
         {
             string specialization = @"[0-9]";
             string specializationname = @"[A-za-z]";
-            string spetializationphone = @"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$";
+            string spetializationphone = @"(8 0(25|29|33|34) ([0-9]{3}( [0-9]{2}){2}))";
             string spetializationdate = @"(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d";//Дата в формате DD/MM/YYYY:
+            string spetializationPasportSer = @"[A-Z]{2}";
+            string spetializationPasportRange = @"[0-9]{6}";
+            string spetializationAdress = @"[a-zA-z0-9]";
             Regex numbers = new Regex(specialization);
             Regex leters = new Regex(specializationname);
             Regex Phone = new Regex(spetializationphone);
             Regex Date = new Regex(spetializationdate);
+            Regex PasportSer = new Regex(spetializationPasportSer);
+            Regex PasportNumbers = new Regex(spetializationPasportRange);
+            Regex Adress = new Regex(spetializationAdress);
             try
             {
                 using (var context = new kursachEntities())
@@ -281,6 +287,7 @@ namespace kursachMain.Windows
                     Договоры pacts = new Договоры();
                     var max = (from x in kurs.Договоры select x.IDДоговора).ToList().Max();
                     pacts.IDДоговора = max + 1;
+
 
                     if (!numbers.IsMatch(PactNomber.Text))
                     {
@@ -292,7 +299,145 @@ namespace kursachMain.Windows
                         CreateDatePactRegular.Foreground = new SolidColorBrush(Colors.Red);
                         CreateDatePactRegular.Content = "DD/MM/YYYY";
                     }
-                    else {
+                    else if (!leters.IsMatch(ImplementerName.Text))
+                    {
+                        FIOOfExecutorRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        FIOOfExecutorRegular.Content = "буквы A-z";                 
+                    }
+                    else if (!leters.IsMatch(ImplementPosition.Text))
+                    {
+                        ExecutorRankRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        ExecutorRankRegular.Content = "буквы A-Z";
+                    }
+                    else if (!leters.IsMatch(EnterpriceName.Text))
+                    {
+                        EnterpriceNameregular.Foreground = new SolidColorBrush(Colors.Red);
+                        EnterpriceNameregular.Content = "буквы A-Z";
+                    }
+                    else if (!leters.IsMatch(academicDegree.Text))
+                    {
+                        AcademcDegreeRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        AcademcDegreeRegular.Content = "буквы A-z";
+                    }
+                    else if (!leters.IsMatch(Rank.Text))
+                    {
+                        RankRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        RankRegular.Content = "буквы A-z";
+                    }
+                    else if (!PasportSer.IsMatch(PasportRange.Text))
+                    {
+                        PasportSerRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        PasportSerRegular.Content = "2 буквы A-Z";
+                    }
+                    else if (!PasportNumbers.IsMatch(PasportNomber.Text))
+                    {
+                        PasportNumberRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        PasportNumberRegular.Content = "цифры 0-9";
+                    }
+                    else if (!Date.IsMatch(DateOfGiven.Text))
+                    {
+                        DateOfTakenPactRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        DateOfTakenPactRegular.Content = "DD/MM/YYYY";
+                    }
+                    else if (!leters.IsMatch(AgencyOfGive.Text))
+                    {
+                        AgencyOfGivenRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        AgencyOfGivenRegular.Content = "Буквы A-z";
+                    }
+                    else if (!numbers.IsMatch(ID_Nomber.Text))
+                    {
+                        ID_NumberRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        ID_NumberRegular.Content = "числа 0-9";
+                    }
+                    else if (!numbers.IsMatch(BelayNomber.Text))
+                    {
+                        belayNumberRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        belayNumberRegular.Content = "цифры 0-9";
+                    }
+                    else if (!Adress.IsMatch(HomeAdress.Text))
+                    {
+                        HomeAdressRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        HomeAdressRegular.Content = "буквы A-z";
+                    }
+                    else if (!Phone.IsMatch(WorkPhoneNumber.Text))
+                    {
+                        WorkPhoneRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        WorkPhoneRegular.Content = "неверный формат номера";
+                    }
+                    else if (!Phone.IsMatch(HomePhoneNumber.Text))
+                    {
+                        HomePhoneRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        HomePhoneRegular.Content = "неверный формат номера";
+                    }
+                    else if (!leters.IsMatch(MainWorkPlace.Text))
+                    {
+                        MainWorkPlaceRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        MainWorkPlaceRegular.Content = "буквы A-z";
+                    }
+                    else if (!numbers.IsMatch(StudID.Text))
+                    {
+                        IDStudRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        IDStudRegular.Content = "числа 0-9";
+                    }
+                    else if (!Date.IsMatch(DateStartPractice.Text))
+                    {
+                        DatePracticeRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        DatePracticeRegular.Content = "неверный формат даты";
+                    }
+                    else if (!numbers.IsMatch(OursCount.Text))
+                    {
+                        HoursCountRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        HoursCountRegular.Content = "числа 0-9";
+                    }
+                    else if (!numbers.IsMatch(CostOfOneOur.Text))
+                    {
+                        CostOfOneOurRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        CostOfOneOurRegular.Content="числа 0-9";
+                    }
+                    else if (!numbers.IsMatch(TotalCost.Text))
+                    {
+                        OurCountRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        OurCountRegular.Content = "числа 0-9";                
+                    }
+                    else if (!numbers.IsMatch(OrderNumber.Text))
+                    {
+                        PactNumberRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        PactNumberRegular.Content = "числа 0-9";
+                    }
+                    else if (!numbers.IsMatch(OrderNumber.Text))
+                    {
+                        PactNumberRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        PactNumberRegular.Content = "числа 0-9";
+                    }
+                    else if (!Date.IsMatch(OrderDate.Text))
+                    {
+                        PactDateRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        PactDateRegular.Content = "DD/MM/YYYY";
+                    }
+                    else if (!leters.IsMatch(FIOHumanResourcesDepartment.Text))
+                    {
+                        FIOHumanResDepartmentRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        FIOHumanResDepartmentRegular.Content = "Буквы A-z";
+                    }
+                    else if (!leters.IsMatch(FIOHeadOfPulpit.Text))
+                    {
+                        FIOZavKafedroyRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        FIOZavKafedroyRegular.Content = "Буквы A-z";
+                    }
+                    else if (!leters.IsMatch(PulpitName.Text))
+                    {
+                        PulpitNameRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        PulpitNameRegular.Content = "Буквы A-z";
+                    }
+                    else if (!leters.IsMatch(AdministratorOfEnterprice.Text))
+                    {
+                        EnterpriceLeaderRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        EnterpriceLeaderRegular.Content = "Буквы A-z";
+                    }
+                   
+
+                    else
+                    {
                         Договоры pact = new Договоры();
                         pact.НомерДоговора = PactNomber.Text;
                         pact.ДатаЗаключения = DateOfContract.Text;
