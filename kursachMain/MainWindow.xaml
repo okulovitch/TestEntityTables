@@ -8,10 +8,10 @@
         Title="MainWindow" Height="350" Width="525" Background="#FF493F3F">
 
     <Grid Margin="207,90,184,90" >
-
-        <Border Background="#FFDADADA" BorderBrush="Gainsboro" BorderThickness="1" Margin="-69,0,-35,10" MinHeight="300" >
-            <StackPanel Margin="10" Cursor="ScrollW">
        
+        <Border Background="#FF8D8282" BorderBrush="Gainsboro" BorderThickness="1" Margin="-69,0,0,37" MinHeight="300" >
+            <StackPanel Margin="10,10,9,184" Cursor="ScrollW">
+
                 <Button x:Name="btn_StudentsMain" Margin="0,10" Click="btn_StudentsMain_Click">Студенты</Button>
                 <Button  Margin="0" Content="Предприятия" Click="Button_Click_2"/>
 
@@ -19,6 +19,7 @@
             </StackPanel>
 
         </Border>
+      
 
     </Grid>
 </Window>

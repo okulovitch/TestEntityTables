@@ -47,8 +47,5 @@ namespace kursachMain
                 return new ValidationResult(true, null);
             }
         }
-
-
-
     }
 }

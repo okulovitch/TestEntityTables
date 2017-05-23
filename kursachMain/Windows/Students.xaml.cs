@@ -19,6 +19,7 @@ using System.Configuration;
 using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace kursachMain.Windows 
 {
     /// <summary>
@@ -101,9 +102,7 @@ namespace kursachMain.Windows
                 using (var context = new kursachEntities())
                 {
                     Специальности spec = new Специальности();
-                    //var max = (from x in Kurs.User select x.UserID).ToList().Max()
-                    //User us = new User();
-                    //us.UserID = max + 1;
+               
                     var max = (from x in kurs.Специальности select x.IDСпециальности).ToList().Max();
                     spec.IDСпециальности = max + 1;
                     if (!rg.IsMatch(NomerSpec.Text) && !rg2.IsMatch(NameSpec.Text))
@@ -118,22 +117,14 @@ namespace kursachMain.Windows
                         numberspecialregular.Foreground = new SolidColorBrush(Colors.Red);
                         numberspecialregular.Content = "Неверный номер специальности";
                     }
-                    //else if (NomerSpec.Text.Length > 3 && NomerSpec.Text.Length < 10)
-                    //{
-                    //    numberspecialregular.Foreground = new SolidColorBrush(Colors.Red);
-                    //    numberspecialregular.Content = "Длина должна составлять от 3 до 10 символов";
-                    //}
+             
 
                     else if (!rg2.IsMatch(NameSpec.Text))
                     {
                         namespecialregular.Foreground = new SolidColorBrush(Colors.Red);
                         namespecialregular.Content = "Неверное название специальности";
                     }
-                    //else if (NameSpec.Text.Length > 3 && NameSpec.Text.Length < 10)
-                    //{
-                    //    namespecialregular.Foreground = new SolidColorBrush(Colors.Red);
-                    //    namespecialregular.Content = "Длина должна составлять от 3 до 10 символов";
-                    //}
+                
                     else
                         {
                             spec.НазваниеСпециальности = NameSpec.Text;
@@ -159,24 +150,20 @@ namespace kursachMain.Windows
         }
 
         private void SaveStudButton_Click(object sender, RoutedEventArgs e)
-        {
-         
-
+        {        
             try
             {
                 string specialization = @"[0-9]";
                 string specializationname = @"[A-za-z]";
                 string spetializationphone = @"(8 0(25|29|33|34) ([0-9]{3}( [0-9]{2}){2}))";
-
                 Regex numbers = new Regex(specialization);
                 Regex leters = new Regex(specializationname);
                 Regex Phone = new Regex(spetializationphone);
-         
-                //var contextt = new ValidationContext(Студенты);
                 using (var context = new kursachEntities())
                 {
-
                     Студенты stud = new Студенты();
+                    Группы gr = new Группы();
+
                     var max = (from x in kurs.Студенты select x.IDСтудента).ToList().Max();
                     stud.IDСтудента = max + 1;
 
@@ -202,6 +189,11 @@ namespace kursachMain.Windows
                         IDGrupStudRegular.Foreground = new SolidColorBrush(Colors.Red);
                         IDGrupStudRegular.Content = "используйте числа 0-9";
                     }
+                    else if(gr.IDГруппы != int.Parse(IDGrup.Text))
+                    {
+                        IDGrupStudRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        IDGrupStudRegular.Content = "используйте существующий ID";
+                    }
                     else if (!numbers.IsMatch(PhoneStud.Text))
                     {
                         StudPhoneNumberRegular.Foreground = new SolidColorBrush(Colors.Red);
@@ -212,8 +204,6 @@ namespace kursachMain.Windows
                         StudRecordBookRegular.Foreground = new SolidColorBrush(Colors.Red);
                         StudRecordBookRegular.Content = "используйте числа 0-9";
                     }
-                 //  else if(IDGrup.Text>)
-                    
                     else
                     {
                         stud.ФИОСтудента = StudName.Text;
@@ -228,17 +218,6 @@ namespace kursachMain.Windows
                         StudPhoneNumberRegular.Content = "";       
                         StudRecordBookRegular.Content = "";
                     }
-
-                    //var results = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
-                    //var ValCont = new ValidationContext(stud);
-                    //if (!Validator.TryValidateObject(stud,ValCont, results, true))
-                    //{
-                    //    foreach(var error in results)
-                    //    {
-                    //        MessageBox.Show(error.ErrorMessage);
-                    //    }
-                    //}
-                        
                 }
             }
             catch (Exception ex)
@@ -284,9 +263,10 @@ namespace kursachMain.Windows
             {
                 using (var context = new kursachEntities())
                 {
-                    Договоры pacts = new Договоры();
+                    Договоры pact = new Договоры();
+                    Студенты stud = new Студенты();
                     var max = (from x in kurs.Договоры select x.IDДоговора).ToList().Max();
-                    pacts.IDДоговора = max + 1;
+                    pact.IDДоговора = max + 1;
 
 
                     if (!numbers.IsMatch(PactNomber.Text))
@@ -379,6 +359,11 @@ namespace kursachMain.Windows
                         IDStudRegular.Foreground = new SolidColorBrush(Colors.Red);
                         IDStudRegular.Content = "числа 0-9";
                     }
+                    else if (stud.IDСтудента!=int.Parse(StudID.Text))
+                    {
+                        IDStudRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        IDStudRegular.Content = "неверный ID";
+                    }
                     else if (!Date.IsMatch(DateStartPractice.Text))
                     {
                         DatePracticeRegular.Foreground = new SolidColorBrush(Colors.Red);
@@ -438,7 +423,7 @@ namespace kursachMain.Windows
 
                     else
                     {
-                        Договоры pact = new Договоры();
+                        
                         pact.НомерДоговора = PactNomber.Text;
                         pact.ДатаЗаключения = DateOfContract.Text;
                         pact.ФИОИсполнителя = ImplementerName.Text;
@@ -530,74 +515,90 @@ namespace kursachMain.Windows
         private void Button_Save_Stud(object sender, RoutedEventArgs e)
         {
 
-        
+
             using (var context = new kursachEntities())
             {
+                Специальности spec = new Специальности();
+                Группы grups = new Группы();
                 string specialization = @"[0-9]";
                 string specializationname = @"[A-Za-z]";
 
                 Regex numbers = new Regex(specialization);
                 Regex leters = new Regex(specializationname);
+                try {
+                    if (!numbers.IsMatch(nomberGr.Text) && !leters.IsMatch(Kurator.Text) && !leters.IsMatch(Starosta.Text) && !numbers.IsMatch(ID_Spec.Text))
+                    {
+                        GrupNumberRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        GrupNumberRegular.Content = "используйте числа 0-9";
+                        KuratorFIORegular.Foreground = new SolidColorBrush(Colors.Red);
+                        KuratorFIORegular.Content = "используйте буквы A-z";
+                        StarostaFIORegular.Foreground = new SolidColorBrush(Colors.Red);
+                        StarostaFIORegular.Content = "используйте буквы A-z";
+                        IDSpecialRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        IDSpecialRegular.Content = "используйте числа 0-9";
 
-                if (!numbers.IsMatch(nomberGr.Text) && !leters.IsMatch(Kurator.Text) && !leters.IsMatch(Starosta.Text) && !numbers.IsMatch(ID_Spec.Text))
-                {
-                    GrupNumberRegular.Foreground = new SolidColorBrush(Colors.Red);
-                    GrupNumberRegular.Content = "используйте числа 0-9";
-                    KuratorFIORegular.Foreground = new SolidColorBrush(Colors.Red);
-                    KuratorFIORegular.Content = "используйте буквы A-z";
-                    StarostaFIORegular.Foreground = new SolidColorBrush(Colors.Red);
-                    StarostaFIORegular.Content = "используйте буквы A-z";
-                    IDSpecialRegular.Foreground = new SolidColorBrush(Colors.Red);
-                    IDSpecialRegular.Content = "используйте числа 0-9";
+                    }
+                    else if (!numbers.IsMatch(nomberGr.Text))
+                    {
+                        GrupNumberRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        GrupNumberRegular.Content = "используйте числа 0-9";
+                    }
+                    else if (grups.НомерГруппы == int.Parse(nomberGr.Text))
+                    {
+                        GrupNumberRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        GrupNumberRegular.Content = "такой номер группы уже существует";
+                    }
+                    else if (!leters.IsMatch(Kurator.Text))
+                    {
+                        KuratorFIORegular.Foreground = new SolidColorBrush(Colors.Red);
+                        KuratorFIORegular.Content = "используйте буквы A-z";
+                    }
+                    else if (!leters.IsMatch(Starosta.Text))
+                    {
+                        StarostaFIORegular.Foreground = new SolidColorBrush(Colors.Red);
+                        StarostaFIORegular.Content = "используйте буквы A-z";
+                    }
+                    else if (!numbers.IsMatch(ID_Spec.Text))
+                    {
+                        IDSpecialRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        IDSpecialRegular.Content = "используйте числа 0-9";
+                    }
+                    else if ((spec.IDСпециальности != int.Parse(ID_Spec.Text)))
+                    {
+                        IDSpecialRegular.Foreground = new SolidColorBrush(Colors.Red);
+                        IDSpecialRegular.Content = "используйте существующий ID";
+                    }
+                    else
+                    {
+                        
+                        grups.НомерГруппы = int.Parse(nomberGr.Text);
+                        grups.ФИОКуратора = Kurator.Text;
+                        grups.ФИОСтаросты = Starosta.Text;
 
-                }
-                else if (!numbers.IsMatch(nomberGr.Text))
-                {
-                    GrupNumberRegular.Foreground = new SolidColorBrush(Colors.Red);
-                    GrupNumberRegular.Content = "используйте числа 0-9";
-                }
-                else if (!leters.IsMatch(Kurator.Text))
-                {
-                    KuratorFIORegular.Foreground = new SolidColorBrush(Colors.Red);
-                    KuratorFIORegular.Content = "используйте буквы A-z";
-                }
-                else if (!leters.IsMatch(Starosta.Text))
-                {
-                    StarostaFIORegular.Foreground = new SolidColorBrush(Colors.Red);
-                    StarostaFIORegular.Content = "используйте буквы A-z";
-                }
-                else if (!numbers.IsMatch(ID_Spec.Text))
-                {
-                    IDSpecialRegular.Foreground = new SolidColorBrush(Colors.Red);
-                    IDSpecialRegular.Content = "используйте числа 0-9";
-                }
-                else
-                {
-                    Группы grups = new Группы();
-                    grups.НомерГруппы = int.Parse(nomberGr.Text);
-                    grups.ФИОКуратора = Kurator.Text;
-                    grups.ФИОСтаросты = Starosta.Text;
+                        grups.IDСпециальности = int.Parse(ID_Spec.Text);
+                        context.Группы.Add(grups);
+                        context.SaveChanges();
+                        MessageBox.Show("Saved");
+                        IDSpecialRegular.Content = "";
+                        StarostaFIORegular.Content = "";
+                        KuratorFIORegular.Content = "";
+                        GrupNumberRegular.Content = "";
 
-                    grups.IDСпециальности = int.Parse(ID_Spec.Text);
-                    context.Группы.Add(grups);
-                    context.SaveChanges();
-                    MessageBox.Show("Saved");
-                    IDSpecialRegular.Content = "";
-                    StarostaFIORegular.Content = "";
-                    KuratorFIORegular.Content = "";
-                    GrupNumberRegular.Content = "";
-
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
+
         }
 
         private void Button_Update_Stud(object sender, RoutedEventArgs e)
         {
-
             var data = from x in kurs.Группы select new { x.IDГруппы, x.НомерГруппы, x.ФИОКуратора, x.ФИОСтаросты, x.IDСпециальности };
             StudentsDataGrid.ItemsSource = data.ToList();
-           // SpecDataGrid.ItemsSource = data.ToList();
-
+            //SpecDataGrid.ItemsSource = data.ToList();
         }
 
 
@@ -812,10 +813,66 @@ namespace kursachMain.Windows
 
         private void DeleteSpec_Click(object sender, RoutedEventArgs e)
         {
-           using (var context=new kursachEntities())
+            if (SpecDataGrid.SelectedIndex != -1)
             {
-                
+
+                using (var context = new kursachEntities())
+                {
+                    //  Специальности gr = new Специальности();
+                    //  gr.IDСпециальности = int.Parse(DeleteSpec.Text);
+                    //var max = (from x in kurs.Договоры select x.IDДоговора).ToList().Max();
+                    //pacts.IDДоговора = max + 1;
+                    // var UserID = (SpecDataGrid.SelectedItem as Специальности).IDСпециальности;
+                   // var GrupsID = (from x in context.Специальности select x.IDСпециальности);
+                    //var deleteSpec = (from x in context.Специальности where x.IDСпециальности == GrupsID select x.IDСпециальности);
+                    // var deletedSpec = (from i in context.Специальности where GrupsID == i.IDСпециальности select i).Single();
+                    //  context.Специальности.Attach(deletedSpec);
+                   // context.Специальности.Remove(deletedSpec);
+                   DataRowView SelectedRow =(DataRowView) SpecDataGrid.SelectedItem;
+                    int SpecID = (int)SelectedRow["IDСпециальности"];
+                    var deleteSpec = (from i in context.Специальности where SpecID == i.IDСпециальности select i).Single();
+                    context.Специальности.Remove(deleteSpec);
+                    context.SaveChanges();
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("pick id in grid");
+
+            }
+            
+        }
+
+
+        
+        private void deleleteGrup_btn(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (StudentsDataGrid.SelectedIndex != -1)
+                {
+                    using (var context = new kursachEntities())
+                    {
+                        int UserID = (StudentsDataGrid.SelectedItem as Группы).IDГруппы;
+                        var deletedUser1 = (from i in context.Группы where UserID == i.IDГруппы select i).Single();
+                        context.Группы.Remove(deletedUser1);
+                        context.SaveChanges();
+                    }
+
+                }
+                else
+                {
+
+                    MessageBox.Show("Error Select ID");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
+       
     }
 }

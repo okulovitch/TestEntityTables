@@ -11,51 +11,23 @@ namespace kursachMain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Data.Entity.Validation;
-
-    public partial class Студенты//: IValidatableObject
+    
+    public partial class Студенты
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Студенты()
         {
             this.Договоры = new HashSet<Договоры>();
         }
-
     
         public int IDСтудента { get; set; }
-        //[Required]
-        //[StringLength(50,MinimumLength =3)]
         public string ФИОСтудента { get; set; }
-        //[Required]
-        //[Range(1,100)]
         public int IDГруппы { get; set; }
         public string НомерТелефона { get; set; }
         public string НомерЗачетки { get; set; }
-  
-        //public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        //{
-        //    List<ValidationResult> errors = new List<ValidationResult>();
-        //    if (string.IsNullOrWhiteSpace(this.ФИОСтудента))
-        //        errors.Add(new ValidationResult("No FIO"));
-
-        //    if (this.IDГруппы < 1 || this.IDГруппы > 100)
-        //        errors.Add(new ValidationResult("Недопустимый ID Группы"));
-
-        //    if (string.IsNullOrWhiteSpace(this.НомерТелефона))
-        //        errors.Add(new ValidationResult("Не указан номер телефона"));
-
-
-        //    if (string.IsNullOrWhiteSpace(this.НомерЗачетки))
-        //        errors.Add(new ValidationResult("Не указан номер зачетки"));
-        //    return errors;
- 
-
-        //}
+    
         public virtual Группы Группы { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Договоры> Договоры { get; set; }
-
-    
     }
 }

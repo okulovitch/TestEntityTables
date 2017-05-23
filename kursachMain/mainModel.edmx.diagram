@@ -4,18 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e7aa438af632445da0e195247547f732" Name="Diagram1" ZoomLevel="73">
-        <EntityTypeShape EntityType="kursachModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="kursachModel.Виды_практики" Width="1.5" PointX="10.5" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="kursachModel.Группы" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+      <Diagram DiagramId="e7aa438af632445da0e195247547f732" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="kursachModel.sysdiagrams" Width="1.5" PointX="4.875" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.Виды_практики" Width="1.5" PointX="13.125" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.Группы" Width="1.5" PointX="3.875" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="kursachModel.Договоры" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="kursachModel.ПланНабора" Width="1.5" PointX="7.5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.ПланНабора" Width="1.5" PointX="7.625" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="kursachModel.Предприятия" Width="1.5" PointX="9.75" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="kursachModel.Преподаватели" Width="1.5" PointX="10.5" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="kursachModel.ПроведениеПрактики" Width="1.5" PointX="8.25" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="kursachModel.Специальности" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="kursachModel.Студенты" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="kursachModel.Текущая_практика" Width="1.5" PointX="12.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.Преподаватели" Width="1.5" PointX="10.125" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.ПроведениеПрактики" Width="1.5" PointX="15.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.Специальности" Width="1.5" PointX="2.125" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.Студенты" Width="1.5" PointX="5.625" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="kursachModel.Текущая_практика" Width="1.5" PointX="11.375" PointY="3.625" IsExpanded="true" />
         <AssociationConnector Association="kursachModel.FK_Виды_практики_ПроведениеПрактики" ManuallyRouted="false" />
         <AssociationConnector Association="kursachModel.FK_Текущая_практика_Виды_практики" ManuallyRouted="false" />
         <AssociationConnector Association="kursachModel.FK_Группы_Специальности" ManuallyRouted="false" />

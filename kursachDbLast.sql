@@ -1,7 +1,7 @@
 USE [kursach]
 GO
 
-/****** Object:  Table [dbo].[Виды практики]    Script Date: 15.05.2017 0:28:57 ******/
+/****** Object:  Table [dbo].[Виды практики]    Script Date: 22.05.2017 1:21:04 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -33,10 +33,11 @@ GO
 ALTER TABLE [dbo].[Виды практики] CHECK CONSTRAINT [FK_Виды практики_ПроведениеПрактики]
 GO
 
+
 USE [kursach]
 GO
 
-/****** Object:  Table [dbo].[Группы]    Script Date: 15.05.2017 0:29:08 ******/
+/****** Object:  Table [dbo].[Группы]    Script Date: 22.05.2017 1:21:20 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -70,10 +71,11 @@ GO
 ALTER TABLE [dbo].[Группы] CHECK CONSTRAINT [FK_Группы_Специальности]
 GO
 
+
 USE [kursach]
 GO
 
-/****** Object:  Table [dbo].[Договоры]    Script Date: 15.05.2017 0:29:19 ******/
+/****** Object:  Table [dbo].[Договоры]    Script Date: 22.05.2017 1:21:32 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -134,7 +136,7 @@ GO
 USE [kursach]
 GO
 
-/****** Object:  Table [dbo].[ПланНабора]    Script Date: 15.05.2017 0:29:28 ******/
+/****** Object:  Table [dbo].[ПланНабора]    Script Date: 22.05.2017 1:21:45 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -162,7 +164,7 @@ GO
 USE [kursach]
 GO
 
-/****** Object:  Table [dbo].[Предприятия]    Script Date: 15.05.2017 0:29:43 ******/
+/****** Object:  Table [dbo].[Предприятия]    Script Date: 22.05.2017 1:22:01 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -210,7 +212,7 @@ GO
 USE [kursach]
 GO
 
-/****** Object:  Table [dbo].[Преподаватели]    Script Date: 15.05.2017 0:29:53 ******/
+/****** Object:  Table [dbo].[Преподаватели]    Script Date: 22.05.2017 1:22:09 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -239,7 +241,7 @@ GO
 USE [kursach]
 GO
 
-/****** Object:  Table [dbo].[ПроведениеПрактики]    Script Date: 15.05.2017 0:30:03 ******/
+/****** Object:  Table [dbo].[ПроведениеПрактики]    Script Date: 22.05.2017 1:22:18 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -268,7 +270,7 @@ GO
 USE [kursach]
 GO
 
-/****** Object:  Table [dbo].[Специальности]    Script Date: 15.05.2017 0:30:13 ******/
+/****** Object:  Table [dbo].[Специальности]    Script Date: 22.05.2017 1:22:26 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -296,7 +298,7 @@ GO
 USE [kursach]
 GO
 
-/****** Object:  Table [dbo].[Студенты]    Script Date: 15.05.2017 0:30:26 ******/
+/****** Object:  Table [dbo].[Студенты]    Script Date: 22.05.2017 1:22:33 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -333,7 +335,7 @@ GO
 USE [kursach]
 GO
 
-/****** Object:  Table [dbo].[Текущая практика]    Script Date: 15.05.2017 0:30:37 ******/
+/****** Object:  Table [dbo].[Текущая практика]    Script Date: 22.05.2017 1:22:39 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -373,9 +375,4 @@ GO
 
 ALTER TABLE [dbo].[Текущая практика] CHECK CONSTRAINT [FK_Текущая практика_Преподаватели]
 GO
-
-
-
-
-
 

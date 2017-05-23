@@ -238,6 +238,8 @@ namespace kursachMain.Windows
             using (var context = new kursachEntities())
             {
                 Предприятия enterpr = new Предприятия();
+                Договоры pacts = new Договоры();
+                ПланНабора plan = new ПланНабора();
                 var max = (from x in kurs.Предприятия select x.ID_предприятия).ToList().Max();
                 enterpr.ID_предприятия = max + 1;
                 if (!Leters.IsMatch(NameBox.Text) && (!NumbersEnterprice.IsMatch(YNPBox.Text)) && (!Adress.IsMatch(Addres.Text))
@@ -291,12 +293,29 @@ namespace kursachMain.Windows
                     ContactFaceRegular.Content = "буквы A-z";
                 }
                 else if (!NumbersEnterprice.IsMatch(IDEnterpricesPacts.Text))
+                {               
+                   IDPactsRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    IDPactsRegular.Content = "числа 0-9";
+                }
+                else if(pacts.IDДоговора != int.Parse(IDEnterpricesPacts.Text))
+                {
+                    IDPactsRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    IDPactsRegular.Content = "введите существующий ID";
+
+                }
+                else if (!NumbersEnterprice.IsMatch(IDOfTakingOnYear.Text))
                 {
                     IDTakeOnYearRegular.Foreground = new SolidColorBrush(Colors.Red);
                     IDTakeOnYearRegular.Content = "числа 0-9";
                 }
+                else if(plan.IDНабораНаГод != int.Parse(IDOfTakingOnYear.Text))
+                {
+                    IDTakeOnYearRegular.Foreground = new SolidColorBrush(Colors.Red);
+                    IDTakeOnYearRegular.Content = "введите существующий ID";
 
-           //     else if(!Leters.IsMatch(NameBox.Text)
+                }
+
+                //     else if(!Leters.IsMatch(NameBox.Text)
                 else
                 {
 

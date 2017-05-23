@@ -101,3 +101,32 @@ C:\Users\Владимир\Documents\Visual Studio 2017\Projects\mfcEntityKursach
 C:\Users\Владимир\Documents\Visual Studio 2017\Projects\mfcEntityKursach-master\kursachMain\obj\Debug\kursachMain.exe
 C:\Users\Владимир\Documents\Visual Studio 2017\Projects\mfcEntityKursach-master\kursachMain\obj\Debug\kursachMain.pdb
 C:\Users\Владимир\Documents\Visual Studio 2017\Projects\mfcEntityKursach-master\kursachMain\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\mfcEntityKursach-master\kursachMain\bin\Debug\kursachMain.exe.config
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\kursachMain.exe
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\kursachMain.pdb
+D:\mfcEntityKursach-master\kursachMain\bin\Debug\kursachMain.exe
+D:\mfcEntityKursach-master\kursachMain\bin\Debug\kursachMain.pdb
+D:\mfcEntityKursach-master\kursachMain\bin\Debug\EntityFramework.dll
+D:\mfcEntityKursach-master\kursachMain\bin\Debug\EntityFramework.SqlServer.dll
+D:\mfcEntityKursach-master\kursachMain\bin\Debug\EntityFramework.xml
+D:\mfcEntityKursach-master\kursachMain\bin\Debug\EntityFramework.SqlServer.xml
+D:\mfcEntityKursach-master\kursachMain\bin\Debug\ru\EntityFramework.resources.dll
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\kursachMain.csprojResolveAssemblyReference.cache
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\MainWindow.g.cs
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\Windows\createContract.g.cs
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\Windows\Enterprises.g.cs
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\Windows\Practice.g.cs
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\Windows\Students.g.cs
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\App.g.cs
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\kursachMain_Content.g.cs
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\kursachMain_MarkupCompile.cache
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\kursachMain_MarkupCompile.lref
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\MainWindow.baml
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\Windows\createContract.baml
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\Windows\Enterprises.baml
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\Windows\Practice.baml
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\Windows\Students.baml
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\kursachMain.g.resources
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\kursachMain.Properties.Resources.resources
+D:\mfcEntityKursach-master\kursachMain\obj\Debug\kursachMain.csproj.GenerateResource.Cache
